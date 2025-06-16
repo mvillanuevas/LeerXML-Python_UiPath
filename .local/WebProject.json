@@ -1,0 +1,184 @@
+{
+  "Snapshot": {
+    "Id": "48074917-31c2-427d-ad94-3fa5449eb9f6",
+    "ExpressionLanguage": "VisualBasic",
+    "ProjectType": "Process",
+    "Name": "Leer_Facturas_Nomina",
+    "Description": "Nomina",
+    "LastModifiedTime": "2025-06-09T18:37:56.0149919Z",
+    "CreationTime": "2025-05-28T21:07:21.2846275Z",
+    "UserId": "98c30eea-170d-45bc-b7dd-971ddee93ae8",
+    "RootFolder": {
+      "Name": "48074917-31c2-427d-ad94-3fa5449eb9f6",
+      "Folders": [
+        {
+          "Id": "03b3dead-b554-4f32-b680-c18011304cd7",
+          "Name": ".settings",
+          "Folders": [
+            {
+              "Id": "3c910494-c757-440b-b997-e97b25d98fab",
+              "Name": "Debug",
+              "Folders": [],
+              "Files": [
+                {
+                  "Id": "414ac94c-4a28-4ff7-950c-fa77564c4aa1",
+                  "Name": "settings-9e9290da.json",
+                  "IsMain": false
+                }
+              ]
+            },
+            {
+              "Id": "3df181c3-e038-48f2-aca0-7aec5f257f20",
+              "Name": "Release",
+              "Folders": [],
+              "Files": [
+                {
+                  "Id": "35b1bded-a80e-4925-87a0-78bb3fd0653b",
+                  "Name": "settings-9e9290da.json",
+                  "IsMain": false
+                }
+              ]
+            }
+          ],
+          "Files": []
+        },
+        {
+          "Id": "32edf252-a4f4-4682-af44-34ffeab8b666",
+          "Name": ".scripts",
+          "Folders": [],
+          "Files": [
+            {
+              "Id": "14a4ea64-3aed-4bb9-b043-1d09d7ef0a90",
+              "Name": "BloquePorcentual.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "ed7b0319-5762-4f27-adc7-af96677333eb",
+              "Name": "PersonaFisica.vbs",
+              "IsMain": false
+            }
+          ]
+        },
+        {
+          "Id": "a4e371f4-6775-462e-a35e-eb8ae137a85a",
+          "Name": ".project",
+          "Folders": [],
+          "Files": [
+            {
+              "Id": "7627b526-70c7-46a8-b57d-c4327395f811",
+              "Name": "PackageBindingsMetadata.json",
+              "IsMain": false
+            },
+            {
+              "Id": "c1a1e8e4-0789-4b04-91d2-4b9d261893a0",
+              "Name": "design.json",
+              "IsMain": false
+            },
+            {
+              "Id": "531b4dd7-92df-4c6d-be41-7c97f65602f4",
+              "Name": "globalVariables.json",
+              "IsMain": false
+            }
+          ]
+        },
+        {
+          "Id": "243ae1c1-303a-43ed-a65f-0e8dae5578ef",
+          "Name": ".templates",
+          "Folders": [],
+          "Files": [
+            {
+              "Id": "c1d7d956-0fa9-4e01-8312-06851725d9ad",
+              "Name": "Catalogo Bloques.xlsx",
+              "IsMain": false
+            }
+          ]
+        }
+      ],
+      "Files": [
+        {
+          "Id": "cc4a4637-6f5f-41fb-b514-333547387a1d",
+          "Name": "Bloque29.xaml",
+          "IsMain": false
+        },
+        {
+          "Id": "74c5638b-726e-44eb-9f20-f78528ac2802",
+          "Name": "LeerXML.xaml",
+          "IsMain": false
+        },
+        {
+          "Id": "755e8074-17c4-4c84-9513-514b37df8079",
+          "Name": "project.json",
+          "IsMain": false
+        },
+        {
+          "Id": "263b9bb4-c821-4992-a1d4-033ab4f01b49",
+          "Name": "Main.xaml",
+          "IsMain": true
+        },
+        {
+          "Id": "cfff3436-d9be-4d50-be00-ffca874d39d9",
+          "Name": "LeerFacturaNomina.xaml",
+          "IsMain": false
+        },
+        {
+          "Id": "193e067d-2119-4497-b35c-4c7af603f1a5",
+          "Name": "EscribirNomina.xaml",
+          "IsMain": false
+        }
+      ]
+    },
+    "Dependencies": [
+      {
+        "Name": "UiPath.Python.Activities",
+        "Version": "[1.10.0]"
+      },
+      {
+        "Name": "UiPath.System.Activities",
+        "Version": "[25.4.3]"
+      },
+      {
+        "Name": "UiPath.WebAPI.Activities",
+        "Version": "[1.21.1]"
+      }
+    ],
+    "HasTrigger": false,
+    "DisableAutoUpdate": false
+  },
+  "OriginalFilesHash": {
+    "Main.xaml": "V0R+3PApeMc8IREq1bzOgqUgd3HgdwNgvUAb7p8V8XA=",
+    "EscribirNomina.xaml": "YjLteWaQ5DdBuEbV7JYXxdNQhycTuKN4DYL88Gzq+gQ=",
+    ".project/PackageBindingsMetadata.json": "J8WxptCIP4OypCp+TsiVwBL7Ny/aIDyx+0uMgps3pN8=",
+    ".settings/Debug/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
+    "project.json": "dLHyCev6StTq54DVtz7d02GxUZfiN+9mCL0UAF9Szvs=",
+    ".scripts/PersonaFisica.vbs": "oUPEWJTD8jyTG0OU+FzN8E+0OsisZZ/OWJywUjub4fQ=",
+    "Bloque29.xaml": "FgiI0BhP/7Dey54Pxm/t3M+GWqHIMKTueCPa45dBwaw=",
+    "LeerFacturaNomina.xaml": "noRW3GJTTJJqoHT44nm13MHd/v7xbyCCsd12W89At2w=",
+    ".scripts/BloquePorcentual.vbs": "2gVtutbmefJsOLczqm3+ytXjz/mWwHW45rZ410hhwlo=",
+    ".settings/Release/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
+    ".templates/Catalogo Bloques.xlsx": "43CqnfmaXWy+4fBO0IcB57LCGW0agnF6LyiRA0BKHVI=",
+    ".project/globalVariables.json": "T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU=",
+    "LeerXML.xaml": "DCDDKE1GiHNKumOQuRobUFTIs9KkeLWRXgjLArVf0kA=",
+    ".project/design.json": "OSn5OGDSTqb7VoeZ2kDfitAA5XA8pC3nXBRuqXzFw0Y="
+  },
+  "StudioWebFiles": [
+    "Bloque29.xaml",
+    "EscribirNomina.xaml",
+    "LeerFacturaNomina.xaml",
+    "LeerXML.xaml",
+    "Main.xaml",
+    "project.json",
+    ".project/design.json",
+    ".project/globalVariables.json",
+    ".project/PackageBindingsMetadata.json",
+    ".scripts/BloquePorcentual.vbs",
+    ".scripts/PersonaFisica.vbs",
+    ".settings/Debug/settings-9e9290da.json",
+    ".settings/Release/settings-9e9290da.json",
+    ".templates/Catalogo Bloques.xlsx"
+  ],
+  "LockKey": "49a4d5aa-e07e-4c3c-b8e0-49e6535ee861",
+  "LocalProjectPath": "C:\\Users\\HE678HU\\OneDrive - EY\\Documents\\UiPath\\Leer_Facturas_Nomina",
+  "ProjectId": "48074917-31c2-427d-ad94-3fa5449eb9f6",
+  "ProjectName": "Leer_Facturas_Nomina",
+  "Description": "Nomina"
+}
