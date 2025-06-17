@@ -5,7 +5,7 @@
     "ProjectType": "Process",
     "Name": "Leer_Facturas_Nomina",
     "Description": "Nomina",
-    "LastModifiedTime": "2025-06-09T18:37:56.0149919Z",
+    "LastModifiedTime": "2025-06-17T21:18:44.3314352Z",
     "CreationTime": "2025-05-28T21:07:21.2846275Z",
     "UserId": "98c30eea-170d-45bc-b7dd-971ddee93ae8",
     "RootFolder": {
@@ -48,6 +48,21 @@
           "Folders": [],
           "Files": [
             {
+              "Id": "bdd7aced-2fe7-4a2f-9803-9cadf88f3546",
+              "Name": "ISN.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "32d0aa7b-57ed-491e-820c-cd32f10bae39",
+              "Name": "Infonavit.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "99edbfb1-60f0-4b11-818a-9777af21802d",
+              "Name": "IMSS.vbs",
+              "IsMain": false
+            },
+            {
               "Id": "14a4ea64-3aed-4bb9-b043-1d09d7ef0a90",
               "Name": "BloquePorcentual.vbs",
               "IsMain": false
@@ -55,6 +70,11 @@
             {
               "Id": "ed7b0319-5762-4f27-adc7-af96677333eb",
               "Name": "PersonaFisica.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "5855cb0b-12b1-4589-a147-1b4e89b485ba",
+              "Name": "ImportTxT.vbs",
               "IsMain": false
             }
           ]
@@ -145,19 +165,23 @@
     "DisableAutoUpdate": false
   },
   "OriginalFilesHash": {
-    "Main.xaml": "V0R+3PApeMc8IREq1bzOgqUgd3HgdwNgvUAb7p8V8XA=",
     "EscribirNomina.xaml": "YjLteWaQ5DdBuEbV7JYXxdNQhycTuKN4DYL88Gzq+gQ=",
+    "Main.xaml": "V0R+3PApeMc8IREq1bzOgqUgd3HgdwNgvUAb7p8V8XA=",
     ".project/PackageBindingsMetadata.json": "J8WxptCIP4OypCp+TsiVwBL7Ny/aIDyx+0uMgps3pN8=",
     ".settings/Debug/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
-    "project.json": "dLHyCev6StTq54DVtz7d02GxUZfiN+9mCL0UAF9Szvs=",
+    "project.json": "EBJjLUyBmnFMkeWMbqScfX6Jj24xkAyundKdW0i7bS8=",
     ".scripts/PersonaFisica.vbs": "oUPEWJTD8jyTG0OU+FzN8E+0OsisZZ/OWJywUjub4fQ=",
+    ".scripts/ISN.vbs": "nL6Dq4CO7t+wFZcdTPEnYd+NOl3vottQDrqRU7Po1lU=",
     "Bloque29.xaml": "FgiI0BhP/7Dey54Pxm/t3M+GWqHIMKTueCPa45dBwaw=",
     "LeerFacturaNomina.xaml": "noRW3GJTTJJqoHT44nm13MHd/v7xbyCCsd12W89At2w=",
     ".scripts/BloquePorcentual.vbs": "2gVtutbmefJsOLczqm3+ytXjz/mWwHW45rZ410hhwlo=",
     ".settings/Release/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
     ".templates/Catalogo Bloques.xlsx": "43CqnfmaXWy+4fBO0IcB57LCGW0agnF6LyiRA0BKHVI=",
     ".project/globalVariables.json": "T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU=",
+    ".scripts/ImportTxT.vbs": "6z217h5jZe4hyq66EYwLpf6NhFH1KrhLbuHgOtXsW5A=",
+    ".scripts/Infonavit.vbs": "CzKU/x111RbkhhiHnoSEsYfgAmufC7cOiqZYI4SaH1w=",
     "LeerXML.xaml": "DCDDKE1GiHNKumOQuRobUFTIs9KkeLWRXgjLArVf0kA=",
+    ".scripts/IMSS.vbs": "ZO0ZVwwCK/NsQRN6l9PqHaOYPYY1mzAfZQCYOg2aBgw=",
     ".project/design.json": "OSn5OGDSTqb7VoeZ2kDfitAA5XA8pC3nXBRuqXzFw0Y="
   },
   "StudioWebFiles": [
@@ -171,12 +195,16 @@
     ".project/globalVariables.json",
     ".project/PackageBindingsMetadata.json",
     ".scripts/BloquePorcentual.vbs",
+    ".scripts/ImportTxT.vbs",
+    ".scripts/IMSS.vbs",
+    ".scripts/Infonavit.vbs",
+    ".scripts/ISN.vbs",
     ".scripts/PersonaFisica.vbs",
     ".settings/Debug/settings-9e9290da.json",
     ".settings/Release/settings-9e9290da.json",
     ".templates/Catalogo Bloques.xlsx"
   ],
-  "LockKey": "49a4d5aa-e07e-4c3c-b8e0-49e6535ee861",
+  "LockKey": "a6fcc757-b343-4d19-927e-6defbe777a8f",
   "LocalProjectPath": "C:\\Users\\HE678HU\\OneDrive - EY\\Documents\\UiPath\\Leer_Facturas_Nomina",
   "ProjectId": "48074917-31c2-427d-ad94-3fa5449eb9f6",
   "ProjectName": "Leer_Facturas_Nomina",
