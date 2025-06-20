@@ -123,15 +123,15 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Bloque29" sap:VirtualizedContainerService.HintSize="1212,1128" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Bloque29" sap:VirtualizedContainerService.HintSize="1212,1072" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="515,1105" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="515,1049" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="513,621" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="513,565" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="Result" />
           </Sequence.Variables>
@@ -140,27 +140,15 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeVBScript RunInBatchMode="{x:Null}" UnicodeSupport="{x:Null}" DisplayName="Invoke VBScript" FileName=".scripts\BloquePorcentual.vbs" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="InvokeVBScript_2" KillOnTimeout="True" Result="[Result]" TimeoutMS="30000" WaitForOutput="True">
+          <ui:InvokeVBScript RunInBatchMode="{x:Null}" DisplayName="Invoke VBScript" FileName=".scripts\BloquePorcentual.vbs" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="InvokeVBScript_2" KillOnTimeout="True" Result="[Result]" TimeoutMS="30000" UnicodeSupport="True" WaitForOutput="True">
             <ui:InvokeVBScript.Arguments>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="8">
-                <InArgument x:TypeArguments="x:String">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;&quot;&quot;&quot; + LibroNomina + &quot;&quot;&quot;&quot;" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;&quot;&quot;&quot; + HojaNomina + &quot;&quot;&quot;&quot;" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;&quot;&quot;&quot; + LibroReclas + &quot;&quot;&quot;&quot;" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;&quot;&quot;&quot; + HojaReclas + &quot;&quot;&quot;&quot;" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;&quot;&quot;&quot; + LibroCatalogo + &quot;&quot;&quot;&quot;" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;&quot;&quot;&quot; + HojaCatalogo + &quot;&quot;&quot;&quot;" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String">["""" + LibroNomina + """"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["""" + HojaNomina + """"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["""" + LibroReclas + """"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["""" + HojaReclas + """"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["""" + LibroCatalogo + """"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["""" + HojaCatalogo + """"]</InArgument>
               </scg:List>
             </ui:InvokeVBScript.Arguments>
             <sap:WorkflowViewStateService.ViewState>
@@ -170,7 +158,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeVBScript>
-          <If Condition="[Not string.IsNullOrEmpty(Result)]" sap:VirtualizedContainerService.HintSize="479,383" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[Not string.IsNullOrEmpty(Result)]" sap:VirtualizedContainerService.HintSize="479,327" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
@@ -182,7 +170,7 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,81" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
