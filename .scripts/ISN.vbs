@@ -15,18 +15,18 @@ WorkbookSheetNomina = objArgs(3)
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'ParÃ¡metro para indicar si se quiere visible la aplicaciÃ³n de Excel
+'Parámetro para indicar si se quiere visible la aplicación de Excel
 objExcel.Application.Visible = False
 'Evita movimiento de pantalla
 objExcel.Application.ScreenUpdating = False
-'ParÃ¡metro evitar mostrar pop ups de Excel
+'Parámetro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
 Set objWorkbookBanco = objExcel.Workbooks.Open(WorkbookPathBanco, 0) ' 0 = UpdateLinks None
 Set objWorksheetBanco = objWorkbookBanco.Worksheets(WorkbookSheetBanco)
 
-' Verificar si los filtros estÃ¡n activos en la fila 1, si no, activarlos
+' Verificar si los filtros están activos en la fila 1, si no, activarlos
 If objWorksheetBanco.AutoFilterMode Then
     objWorksheetBanco.Rows(1).AutoFilter
 End If
@@ -35,8 +35,8 @@ If Not objWorksheetBanco.AutoFilterMode Then
     objWorksheetBanco.Rows(1).AutoFilter
 End If
 
-colToFilter = 1 ' NÃºmero de columna a filtrar (1 = columna A)
-' Encontrar la Ãºltima fila con datos en la columna a filtrar
+colToFilter = 1 ' Número de columna a filtrar (1 = columna A)
+' Encontrar la última fila con datos en la columna a filtrar
 lastRow = objWorksheetBanco.Cells(objWorksheetBanco.Rows.Count, colToFilter).End(-4162).Row ' -4162 = xlUp
 
 ' Aplicar autofiltro con el valor "ISN"
@@ -46,12 +46,12 @@ objWorksheetBanco.Range(objWorksheetBanco.Cells(1, colToFilter), objWorksheetBan
 Dim dRange, dDict
 ' Recuperar las celdas visibles de la columna R (columna 18)
 Set dRange = objWorksheetBanco.Range("R2:R" & lastRow).SpecialCells(12) ' 12 = xlCellTypeVisible
-' Crear un diccionario para almacenar los valores Ãºnicos de la columna R
+' Crear un diccionario para almacenar los valores únicos de la columna R
 Set dDict = CreateObject("Scripting.Dictionary")
 
 ' Recorrer las celdas visibles de la columna R (columna 18)
 For Each cell In dRange
-    ' Asegurarse de que la celda no estÃ© vacÃ­a antes de agregarla al diccionario
+    ' Asegurarse de que la celda no esté vacía antes de agregarla al diccionario
     If cell.Value <> "" Then
         ' Agregar el valor de la celda al diccionario
         dDict.Add cell.Value, True
@@ -61,7 +61,7 @@ Next
 ' Contar el numero de keys en el diccionario
 Dim countKeys
 ' Esto solo si existe mas de un resultado del filtro anterior
-' Se puede incluir cada resultado en la inserciÃ³n en la hoja de Nomina
+' Se puede incluir cada resultado en la inserción en la hoja de Nomina
 countKeys = dDict.Count
 
 'Abre libro Excel
@@ -92,7 +92,7 @@ objWorkbookBanco.Close
 objWorkbookN.Save
 objWorkbookN.Close
 
-' Cerrar la aplicaciÃ³n de Excel
+' Cerrar la aplicación de Excel
 objExcel.Quit
 
 'Devuelve el error en caso de

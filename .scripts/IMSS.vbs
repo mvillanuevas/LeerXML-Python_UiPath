@@ -19,24 +19,24 @@ WorkbookSheetCatalogo = objArgs(5)
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'ParÃ¡metro para indicar si se quiere visible la aplicaciÃ³n de Excel
+'Parámetro para indicar si se quiere visible la aplicación de Excel
 objExcel.Application.Visible = False
 'Evita movimiento de pantalla
 objExcel.Application.ScreenUpdating = False
-'ParÃ¡metro evitar mostrar pop ups de Excel
+'Parámetro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
 Set objWorkbookIMSS = objExcel.Workbooks.Open(WorkbookPathIMSS)
 Set objWorksheetIMSS = objWorkbookIMSS.Worksheets(WorkbookSheetIMSS)
 
-' Verificar si los filtros estÃ¡n activos en la fila 1, si no, activarlos
+' Verificar si los filtros están activos en la fila 1, si no, activarlos
 If Not objWorksheetIMSS.AutoFilterMode Then
     objWorksheetIMSS.Rows(1).AutoFilter
 End If
 
-colToFilter = 1 ' NÃºmero de columna a filtrar (1 = columna A)
-' Encontrar la Ãºltima fila con datos en la columna a filtrar
+colToFilter = 1 ' Número de columna a filtrar (1 = columna A)
+' Encontrar la última fila con datos en la columna a filtrar
 lastRow = objWorksheetIMSS.Cells(objWorksheetIMSS.Rows.Count, colToFilter).End(-4162).Row ' -4162 = xlUp
 
 ' Aplicar autofiltro con los valores "aa", "bb" y "cc"
@@ -59,14 +59,14 @@ objWorksheetIMSS.Range("AK1").PasteSpecial -4163 ' -4163 = xlPasteAll
 ' Quitar el modo de corte/copia
 objExcel.CutCopyMode = False
 
-' Copiar valores Ãºnicos de un rango (por ejemplo, X1:X{lastRow}) a un array
+' Copiar valores únicos de un rango (por ejemplo, X1:X{lastRow}) a un array
 Dim uniqueDict, cell, uniqueList, idx
 Set uniqueDict = CreateObject("Scripting.Dictionary")
 
 Dim rngX
 Set rngX = objWorksheetIMSS.Range("X2:X" & lastRow)
 
-' Recorrer el rango y agregar valores Ãºnicos al diccionario
+' Recorrer el rango y agregar valores únicos al diccionario
 ' (se asume que la primera fila es un encabezado y se comienza desde la segunda fila)
 For Each cell In rngX
     If Not IsEmpty(cell.Value) And Trim(cell.Value & "") <> "" Then
@@ -76,13 +76,13 @@ For Each cell In rngX
     End If
 Next
 
-' Encontrar la Ãºltima fila ocupada en la columna AK
+' Encontrar la última fila ocupada en la columna AK
 Dim lastAK2, lastAK3, lastAK4
 lastAK2 = objWorksheetIMSS.Cells(objWorksheetIMSS.Rows.Count, 37).End(-4162).Row + 3
 lastAK4 = lastAK2
 lastAK3 = objWorksheetIMSS.Cells(objWorksheetIMSS.Rows.Count, 37).End(-4162).Row
 
-' Pegar los valores Ãºnicos en otra columna
+' Pegar los valores únicos en otra columna
 For Each key In uniqueDict.Keys
     objWorksheetIMSS.Cells(lastAK2, 37).Value = key ' 37 = columna AK
     objWorksheetIMSS.Cells(lastAK2, 38).Formula = "=SUMIF($AK$2:$AK$" & lastAK3 & ",AK" & lastAK2 & ",$AN$2:$AN$" & lastAK3 & ")"
@@ -109,16 +109,16 @@ Dim iCC, CC
 
 ' Si se encuentra la celda con "IMSS", se procede a buscar en la columna B
 If Not IMSS Is Nothing Then
-    ' Obtiene la Ãºltima fila ocupada en la columna B
+    ' Obtiene la última fila ocupada en la columna B
     Set iRange = objWorksheetN.Range("B" & IMSS.Row & ":B" & objWorksheetN.Cells(objWorksheetN.Rows.Count, 2).End(-4162).Row)
-    ' Itera desde la fila encontrada hasta la Ãºltima fila ocupada en la columna 37 (columna AK)
+    ' Itera desde la fila encontrada hasta la última fila ocupada en la columna 37 (columna AK)
     For i = lastAK4 to objWorksheetIMSS.Cells(objWorksheetIMSS.Rows.Count, 37).End(-4162).Row
-        ' Si la celda en la columna 37 (columna AK) no estÃ¡ vacÃ­a
+        ' Si la celda en la columna 37 (columna AK) no está vacía
         If objWorksheetIMSS.Cells(i, 37).Value <> "" Then
-            ' Busca el valor de la columna 37 (columna AK) en la primera columna del catÃ¡logo
+            ' Busca el valor de la columna 37 (columna AK) en la primera columna del catálogo
             For j = 1 To ultimaFilaC
                 If objWorksheetIMSS.Cells(i, 37).Value = objWorksheetCatalogo.Cells(j,1).value Then
-                    ' Si se encuentra, se asigna el valor de la columna 2 del catÃ¡logo a CC
+                    ' Si se encuentra, se asigna el valor de la columna 2 del catálogo a CC
                     ' y se sale del bucle
                     CC = objWorksheetCatalogo.Cells(j,2).value
                     Exit For

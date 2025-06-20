@@ -13,11 +13,11 @@ Nombre = objArgs(6)
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'Par√°metro para indicar si se quiere visible la aplicaci√≥n de Excel
+'Par·metro para indicar si se quiere visible la aplicaciÛn de Excel
 objExcel.Application.Visible = False
 'Evita movimiento de pantalla
 objExcel.Application.ScreenUpdating = False
-'Par√°metro evitar mostrar pop ups de Excel
+'Par·metro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
