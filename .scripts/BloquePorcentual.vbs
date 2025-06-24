@@ -22,11 +22,11 @@ Set objExcel = CreateObject("Excel.Application")
 Set objDictionary = CreateObject("Scripting.Dictionary")
 Set objDictionaryPorcentual = CreateObject("Scripting.Dictionary")
 
-'Par·metro para indicar si se quiere visible la aplicaciÛn de Excel
+'Parùmetro para indicar si se quiere visible la aplicaciùn de Excel
 objExcel.Application.Visible = True
 'Evita movimiento de pantalla
 objExcel.Application.ScreenUpdating = True
-'Par·metro evitar mostrar pop ups de Excel
+'Parùmetro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
@@ -111,7 +111,7 @@ For i = 0 To objDictionary.Count -1
     'Busca el Nombre para obtener la fila
     Set iFind = iRange.Find(d_item(i),,xlValues,xlPart)
     If iFind Is Nothing Then
-        ' Insertar una nueva fila en la posiciÛn lastRow
+        ' Insertar una nueva fila en la posiciùn lastRow
         objWorksheetNomina.Rows(lastRow).Insert -4121 ' -4121 = xlDown
         ccRow = lastRow
     Else
@@ -120,7 +120,7 @@ For i = 0 To objDictionary.Count -1
 
     Set kFind = mRange.Find(d_key(i),,xlValues,xlPart)
     If kFind Is Nothing Then
-        ' Insertar una nueva columna en la posiciÛn 3 (por ejemplo, antes de la columna C)
+        ' Insertar una nueva columna en la posiciùn 3 (por ejemplo, antes de la columna C)
         objWorksheetNomina.Columns(lastCol - 1).Copy
         objWorksheetNomina.Columns(lastCol).Insert -4121 ' -4121 = xlToRight
         ' Quitar el modo de corte/copia
