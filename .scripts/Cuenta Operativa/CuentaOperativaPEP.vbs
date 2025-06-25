@@ -15,11 +15,11 @@ WorkbookSheetNomina = objArgs(3)
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'Par·metro para indicar si se quiere visible la aplicaciÛn de Excel
+'Parùmetro para indicar si se quiere visible la aplicaciùn de Excel
 objExcel.Application.Visible = False
 'Evita movimiento de pantalla
 objExcel.Application.ScreenUpdating = False
-'Par·metro evitar mostrar pop ups de Excel
+'Parùmetro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
@@ -29,7 +29,7 @@ Set WorkbookSheetNomina = WorkbookPathNomina.Worksheets(WorkbookSheetNomina)
 Set WorkbookPathRexmex = objExcel.Workbooks.Open(WorkbookPathRexmex)
 Set WorkbookSheetRexmex = WorkbookPathRexmex.Worksheets(WorkbookSheetRexmex)
 
-' Verificar si los filtros est·n activos en la fila 1, si no, activarlos
+' Verificar si los filtros estùn activos en la fila 1, si no, activarlos
 If WorkbookSheetNomina.AutoFilterMode Then
     WorkbookSheetNomina.Rows(10).AutoFilter
 End If
@@ -45,7 +45,7 @@ nombreArchivo = filesys.GetFileName(WorkbookPathN)
 nombreArchivo = Replace(nombreArchivo, ".XLSX", "")
 nombreArchivo = Replace(nombreArchivo, ".xlsx", "")
 
-' Encontrar la ˙ltima fila con datos en la columna a filtrar
+' Encontrar la ùltima fila con datos en la columna a filtrar
 lastRow = WorkbookSheetNomina.Cells(WorkbookSheetNomina.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
 lastCol = WorkbookSheetNomina.Cells(3, WorkbookSheetNomina.Columns.Count).End(-4159).Column ' -4159 = xlToLeft
 
@@ -61,7 +61,7 @@ Dim ultimoDiaMes
 ultimoDiaMes = DateSerial(Year(Date), Month(Date) + 1, 0)
 
 ' Columna inical
-colToFilter = 8 ' N˙mero de columna a filtrar (1 = columna A)
+colToFilter = 8 ' Nùmero de columna a filtrar (1 = columna A)
 
 For i = 9 To lastCol
     rowCount = 0
@@ -82,7 +82,7 @@ For i = 9 To lastCol
 
     ' Verificar si hay celdas visibles y si no hay error
     If rowCount > 0 And Err.Number = 0 Then
-        ' Obtener la ˙ltima fila con datos en la hoja de REXMEX
+        ' Obtener la ùltima fila con datos en la hoja de REXMEX
         lastRowR = WorkbookSheetRexmex.Cells(WorkbookSheetRexmex.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
         ' Llenar las filas de la hoja de REXMEX con los datos de la hoja de NOMINA
         For j = 1 To rowCount
@@ -122,7 +122,7 @@ WorkbookPathRexmex.Close
 
 WorkbookPathNomina.Save
 WorkbookPathNomina.Close
-' Cerrar la aplicaciÛn de Excel
+' Cerrar la aplicaciùn de Excel
 objExcel.Quit
 
 'Devuelve el error en caso de

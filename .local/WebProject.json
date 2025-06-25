@@ -5,7 +5,7 @@
     "ProjectType": "Process",
     "Name": "Leer_Facturas_Nomina",
     "Description": "Nomina",
-    "LastModifiedTime": "2025-06-17T21:18:44.3314352Z",
+    "LastModifiedTime": "2025-06-25T15:12:29.6579058Z",
     "CreationTime": "2025-05-28T21:07:21.2846275Z",
     "UserId": "98c30eea-170d-45bc-b7dd-971ddee93ae8",
     "RootFolder": {
@@ -16,24 +16,24 @@
           "Name": ".settings",
           "Folders": [
             {
-              "Id": "3c910494-c757-440b-b997-e97b25d98fab",
-              "Name": "Debug",
-              "Folders": [],
-              "Files": [
-                {
-                  "Id": "414ac94c-4a28-4ff7-950c-fa77564c4aa1",
-                  "Name": "settings-9e9290da.json",
-                  "IsMain": false
-                }
-              ]
-            },
-            {
               "Id": "3df181c3-e038-48f2-aca0-7aec5f257f20",
               "Name": "Release",
               "Folders": [],
               "Files": [
                 {
                   "Id": "35b1bded-a80e-4925-87a0-78bb3fd0653b",
+                  "Name": "settings-9e9290da.json",
+                  "IsMain": false
+                }
+              ]
+            },
+            {
+              "Id": "3c910494-c757-440b-b997-e97b25d98fab",
+              "Name": "Debug",
+              "Folders": [],
+              "Files": [
+                {
+                  "Id": "414ac94c-4a28-4ff7-950c-fa77564c4aa1",
                   "Name": "settings-9e9290da.json",
                   "IsMain": false
                 }
@@ -48,8 +48,8 @@
           "Folders": [],
           "Files": [
             {
-              "Id": "bdd7aced-2fe7-4a2f-9803-9cadf88f3546",
-              "Name": "ISN.vbs",
+              "Id": "99edbfb1-60f0-4b11-818a-9777af21802d",
+              "Name": "IMSS.vbs",
               "IsMain": false
             },
             {
@@ -58,8 +58,23 @@
               "IsMain": false
             },
             {
-              "Id": "99edbfb1-60f0-4b11-818a-9777af21802d",
-              "Name": "IMSS.vbs",
+              "Id": "c2e666dd-75de-4a17-acd0-9a0091f9d380",
+              "Name": "Refacturacion.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "d50bec30-fb95-4da0-8684-11ae733a46bb",
+              "Name": "FiltrarCuentaOperativa.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "703c3788-5c91-4412-b262-d46627f5f2dc",
+              "Name": "CuentaOperativaPEP.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "ed7b0319-5762-4f27-adc7-af96677333eb",
+              "Name": "PersonaFisica.vbs",
               "IsMain": false
             },
             {
@@ -68,8 +83,18 @@
               "IsMain": false
             },
             {
-              "Id": "ed7b0319-5762-4f27-adc7-af96677333eb",
-              "Name": "PersonaFisica.vbs",
+              "Id": "501cd89e-a1bd-4920-b927-252a33ebffe3",
+              "Name": "CuentaOperativaIMSS.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "6945e474-8b31-448f-83ce-b4483c94d6e6",
+              "Name": "CuentaOperativaISN.vbs",
+              "IsMain": false
+            },
+            {
+              "Id": "bdd7aced-2fe7-4a2f-9803-9cadf88f3546",
+              "Name": "ISN.vbs",
               "IsMain": false
             },
             {
@@ -85,6 +110,11 @@
           "Folders": [],
           "Files": [
             {
+              "Id": "531b4dd7-92df-4c6d-be41-7c97f65602f4",
+              "Name": "globalVariables.json",
+              "IsMain": false
+            },
+            {
               "Id": "7627b526-70c7-46a8-b57d-c4327395f811",
               "Name": "PackageBindingsMetadata.json",
               "IsMain": false
@@ -93,10 +123,22 @@
               "Id": "c1a1e8e4-0789-4b04-91d2-4b9d261893a0",
               "Name": "design.json",
               "IsMain": false
+            }
+          ]
+        },
+        {
+          "Id": "d95cd020-fa10-4339-8030-e14168318a51",
+          "Name": ".temp",
+          "Folders": [],
+          "Files": [
+            {
+              "Id": "22949118-7bec-48c0-b0a3-ab5cdf92f917",
+              "Name": "new 2.txt",
+              "IsMain": false
             },
             {
-              "Id": "531b4dd7-92df-4c6d-be41-7c97f65602f4",
-              "Name": "globalVariables.json",
+              "Id": "617e3dae-56ac-4b4d-a9b6-611934fd75c2",
+              "Name": "new 1.txt",
               "IsMain": false
             }
           ]
@@ -116,13 +158,23 @@
       ],
       "Files": [
         {
+          "Id": "74c5638b-726e-44eb-9f20-f78528ac2802",
+          "Name": "LeerXML.xaml",
+          "IsMain": false
+        },
+        {
+          "Id": "cfff3436-d9be-4d50-be00-ffca874d39d9",
+          "Name": "LeerFacturaNomina.xaml",
+          "IsMain": false
+        },
+        {
           "Id": "cc4a4637-6f5f-41fb-b514-333547387a1d",
           "Name": "Bloque29.xaml",
           "IsMain": false
         },
         {
-          "Id": "74c5638b-726e-44eb-9f20-f78528ac2802",
-          "Name": "LeerXML.xaml",
+          "Id": "193e067d-2119-4497-b35c-4c7af603f1a5",
+          "Name": "EscribirNomina.xaml",
           "IsMain": false
         },
         {
@@ -134,16 +186,6 @@
           "Id": "263b9bb4-c821-4992-a1d4-033ab4f01b49",
           "Name": "Main.xaml",
           "IsMain": true
-        },
-        {
-          "Id": "cfff3436-d9be-4d50-be00-ffca874d39d9",
-          "Name": "LeerFacturaNomina.xaml",
-          "IsMain": false
-        },
-        {
-          "Id": "193e067d-2119-4497-b35c-4c7af603f1a5",
-          "Name": "EscribirNomina.xaml",
-          "IsMain": false
         }
       ]
     },
@@ -170,19 +212,26 @@
     ".project/PackageBindingsMetadata.json": "J8WxptCIP4OypCp+TsiVwBL7Ny/aIDyx+0uMgps3pN8=",
     ".settings/Debug/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
     "project.json": "EBJjLUyBmnFMkeWMbqScfX6Jj24xkAyundKdW0i7bS8=",
-    ".scripts/PersonaFisica.vbs": "oUPEWJTD8jyTG0OU+FzN8E+0OsisZZ/OWJywUjub4fQ=",
-    ".scripts/ISN.vbs": "nL6Dq4CO7t+wFZcdTPEnYd+NOl3vottQDrqRU7Po1lU=",
-    "Bloque29.xaml": "FgiI0BhP/7Dey54Pxm/t3M+GWqHIMKTueCPa45dBwaw=",
+    ".scripts/PersonaFisica.vbs": "0zMsh6YhkbEbSVWlXuWyLSN6D2OoOu5zI6Cm1yL6ekw=",
+    ".scripts/ISN.vbs": "9ZImBPrtzFOSLKmedsTRZ5OXGdxYz6mEifOVuPe8JXQ=",
+    "Bloque29.xaml": "mOgYSnyx/BdB1Et9zw7YnslOh6ab5s+yp9DiW4PChkU=",
+    ".scripts/FiltrarCuentaOperativa.vbs": "6+ajovE18NUabW89/NCZxQa/FMiz6nr9DYE2RF883VU=",
+    ".temp/new 1.txt": "rh89GhmDTKlxolH0z3iahS19HtxF+gSU4X6qaui9fnc=",
     "LeerFacturaNomina.xaml": "noRW3GJTTJJqoHT44nm13MHd/v7xbyCCsd12W89At2w=",
-    ".scripts/BloquePorcentual.vbs": "2gVtutbmefJsOLczqm3+ytXjz/mWwHW45rZ410hhwlo=",
+    ".scripts/BloquePorcentual.vbs": "L60Nu66TCCImxeNfliCrUjhPwNud/bh79hSuB1NZXAY=",
+    ".scripts/CuentaOperativaISN.vbs": "ki9XW139KDvpb2S/PNjYkD0+zS4/xvm7iFl5R/oOKWY=",
+    ".temp/new 2.txt": "nSH3uRUNqhJaxhMNSK0meOiFSM4eYI2q5J+Yxh2ymS4=",
     ".settings/Release/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
-    ".templates/Catalogo Bloques.xlsx": "43CqnfmaXWy+4fBO0IcB57LCGW0agnF6LyiRA0BKHVI=",
+    ".scripts/CuentaOperativaIMSS.vbs": "tO6KM8/bYtjA7GXoV7u0kIYtbb/7mMyDy9AaAYzYT/g=",
+    ".templates/Catalogo Bloques.xlsx": "1BRZdLc9oq0qAOYNQLDro9XxPQj3JTh9xwEKYZ+21tg=",
     ".project/globalVariables.json": "T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU=",
     ".scripts/ImportTxT.vbs": "6z217h5jZe4hyq66EYwLpf6NhFH1KrhLbuHgOtXsW5A=",
-    ".scripts/Infonavit.vbs": "CzKU/x111RbkhhiHnoSEsYfgAmufC7cOiqZYI4SaH1w=",
     "LeerXML.xaml": "DCDDKE1GiHNKumOQuRobUFTIs9KkeLWRXgjLArVf0kA=",
-    ".scripts/IMSS.vbs": "ZO0ZVwwCK/NsQRN6l9PqHaOYPYY1mzAfZQCYOg2aBgw=",
-    ".project/design.json": "OSn5OGDSTqb7VoeZ2kDfitAA5XA8pC3nXBRuqXzFw0Y="
+    ".scripts/Infonavit.vbs": "Z5kG9zb9WNPW+a1zsctRaIoJyZg+PVqU3ISsZl2UFcI=",
+    ".scripts/Refacturacion.vbs": "KQ0pfXBDd0fRE5a7T4OgQctM8c+ZCgsDWThOSSsUpiM=",
+    ".scripts/IMSS.vbs": "8iBGlx8w5fvZfh+AjYINBqFY7qtxwF7clNYtNdDWlMs=",
+    ".project/design.json": "OSn5OGDSTqb7VoeZ2kDfitAA5XA8pC3nXBRuqXzFw0Y=",
+    ".scripts/CuentaOperativaPEP.vbs": "RBrWe7KIIpT0/EQiu1/LA99IkguZSLJL/QsweLPd0H4="
   },
   "StudioWebFiles": [
     "Bloque29.xaml",
@@ -195,16 +244,23 @@
     ".project/globalVariables.json",
     ".project/PackageBindingsMetadata.json",
     ".scripts/BloquePorcentual.vbs",
+    ".scripts/CuentaOperativaIMSS.vbs",
+    ".scripts/CuentaOperativaISN.vbs",
+    ".scripts/CuentaOperativaPEP.vbs",
+    ".scripts/FiltrarCuentaOperativa.vbs",
     ".scripts/ImportTxT.vbs",
     ".scripts/IMSS.vbs",
     ".scripts/Infonavit.vbs",
     ".scripts/ISN.vbs",
     ".scripts/PersonaFisica.vbs",
+    ".scripts/Refacturacion.vbs",
     ".settings/Debug/settings-9e9290da.json",
     ".settings/Release/settings-9e9290da.json",
+    ".temp/new 1.txt",
+    ".temp/new 2.txt",
     ".templates/Catalogo Bloques.xlsx"
   ],
-  "LockKey": "a6fcc757-b343-4d19-927e-6defbe777a8f",
+  "LockKey": "3cabdebb-98b2-4a95-98fc-8820a528c0bc",
   "LocalProjectPath": "C:\\Users\\HE678HU\\OneDrive - EY\\Documents\\UiPath\\Leer_Facturas_Nomina",
   "ProjectId": "48074917-31c2-427d-ad94-3fa5449eb9f6",
   "ProjectName": "Leer_Facturas_Nomina",

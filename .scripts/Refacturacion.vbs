@@ -9,9 +9,10 @@
 'ActualMonth = objArgs(4)
 
 WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-WorkbookSheetRexmex = "Cuenta Operativa"
 WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturación may-25.xlsx"
 ActualMonth = 3
+
+WorkbookSheetRexmex = "Cuenta Operativa"
 WorkbookSheetLayout = "Layout"
 
 'Genera un objeto de tipo Excel Application
@@ -107,11 +108,13 @@ For j = 7 To lastRowL
         objWorkbookSheetRefL.Rows(j).Hidden = True
     End If
 Next
-MsgBox "Se han copiado los datos de las hojas de refacturación a la hoja de Layout."
+
 Set objWorkbookSheetRef = objWorkbookPathRef.Worksheets("BL29")
 ' Encontrar la última fila con datos en la columna a filtrar 
-lastRow = objWorkbookSheetRef.Cells(objWorkbookSheetRefL.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
-
+lastRow = objWorkbookSheetRef.Cells(objWorkbookSheetRef.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
+MsgBox "Última fila con datos en BL29: " & lastRow
+'Aplica Text to columns en formate General
+objWorkbookSheetRef.Range("AG:AG").TextToColumns
 ' Ordenar de manera ascendente la columna AG (columna 33) "UUID"
 With objWorkbookSheetRef.Sort
     .SortFields.Clear
@@ -121,20 +124,29 @@ With objWorkbookSheetRef.Sort
     .Apply
 End With
 
-' Revisar duplicados en columna C (WBS, col 3) y modificar columna AG (PEP, col 33)
-Dim rowNum, wbsValue, agValue, sKey
+'____________________________________________________________________________________________________________________________________________
+
+' --- Optimización de rendimiento: lectura y escritura por lotes ---
 Dim wbsDict, wbsDictH, pepCounterDict
+Set wbsDict     = CreateObject("Scripting.Dictionary")
+Set wbsDictH    = CreateObject("Scripting.Dictionary")
+Set pepCounterDict = CreateObject("Scripting.Dictionary")
 
-Set wbsDict     = CreateObject("Scripting.Dictionary") ' Para detectar duplicados por UUID
-Set wbsDictH    = CreateObject("Scripting.Dictionary") ' Para detectar duplicados por WBS+UUID
-Set pepCounterDict = CreateObject("Scripting.Dictionary") ' Contador por UUID (o WBS)
+Dim data, rowNum, totalRows
+Dim wbsValue, agValue, sKey
+Dim results()
 
-For rowNum = 2 To lastRow ' Asumiendo encabezado en la fila 1
-    wbsValue = Trim(objWorkbookSheetRef.Cells(rowNum, 3).Value)
-    agValue  = Trim(objWorkbookSheetRef.Cells(rowNum, 33).Value)
+' Leer todas las filas a un array (más rápido que trabajar directo con Cells)
+data = objWorkbookSheetRef.Range("A2:AV" & lastRow).Value ' A = col 1, AG = col 33
+totalRows = UBound(data, 1)
+ReDim results(totalRows) ' Guardar filas que se deben ocultar
+
+For rowNum = 1 To totalRows ' Ya que empezamos en A2, este es índice 1
+    wbsValue = Trim(data(rowNum, 3))     ' Columna C
+    agValue  = Trim(data(rowNum, 33))    ' Columna AG
     
     If wbsValue <> "" And agValue <> "" Then
-        sKey = agValue & "|" & wbsValue ' Clave compuesta UUID + WBS
+        sKey = agValue & "|" & wbsValue
 
         ' Contador por UUID
         If Not wbsDict.Exists(agValue) Then
@@ -142,68 +154,228 @@ For rowNum = 2 To lastRow ' Asumiendo encabezado en la fila 1
             pepCounterDict.Add agValue, 0
         Else
             pepCounterDict(agValue) = pepCounterDict(agValue) + 1
-            objWorkbookSheetRef.Cells(rowNum, 33).Value = agValue & " pep" & pepCounterDict(agValue)
-            objWorkbookSheetRef.Rows(rowNum).Hidden = True ' Descomenta si deseas ocultar
+            data(rowNum, 33) = agValue & " pep" & pepCounterDict(agValue)
+            results(rowNum) = True ' Marcar para ocultar
         End If
 
-        ' Detección de duplicados exactos UUID+WBS
-        If Not wbsDictH.Exists(sKey) Then
-            wbsDictH.Add sKey, 1
+        ' Duplicado exacto UUID + WBS
+        If wbsDictH.Exists(sKey) Then
+            results(rowNum) = True ' Marcar para ocultar
         Else
-            objWorkbookSheetRef.Rows(rowNum).Hidden = True ' Descomenta si deseas ocultar
+            wbsDictH.Add sKey, 1
         End If
     End If
 Next
 
-' Copiar columnas específicas de objWorkbookSheetRef a objWorkbookSheetRefL
+' Escribir los datos modificados de vuelta
+objWorkbookSheetRef.Range("A2:AG" & lastRow).Value = data
 
-Dim copyLastRow, pasteLastRow
-copyLastRow = objWorkbookSheetRef.Cells(objWorkbookSheetRef.Rows.Count, 1).End(-4162).Row
-pasteLastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 1).End(-4162).Row + 1
+' Ocultar filas en un solo paso
+For rowNum = 1 To totalRows
+    If results(rowNum) = True Then
+        objWorkbookSheetRef.Rows(rowNum + 1).Hidden = True ' +1 por offset a partir de fila 2
+    End If
+Next
 
-' AP (col 42) -> D (col 4)
-objWorkbookSheetRef.Range("AP2:AP" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("D" & pasteLastRow).PasteSpecial -4163
+'____________________________________________________________________________________________________________________________________________
 
-' AG (col 33) -> E (col 5)
-objWorkbookSheetRef.Range("AG2:AG" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("E" & pasteLastRow).PasteSpecial -4163
+' Arreglo de hojas de refacturación
+Dim proveedores
+proveedores = Array("PC CARIGALI", "PTTEP", "REPSOL", "SIERRA NEVADA")
 
-' AI (col 35) -> I (col 9)
-objWorkbookSheetRef.Range("AI2:AI" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("I" & pasteLastRow).PasteSpecial -4163
+saveLastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row + 1
 
-' AH (col 34) -> M (col 13)
-objWorkbookSheetRef.Range("AH2:AH" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("M" & pasteLastRow).PasteSpecial -4163
+For i = LBound(proveedores) To UBound(proveedores)
+    ' Copiar columnas específicas de objWorkbookSheetRef a objWorkbookSheetRefL
 
-' AE (col 31) -> R (col 18)
-objWorkbookSheetRef.Range("AE2:AE" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("R" & pasteLastRow).PasteSpecial -4163
+    Dim copyLastRow, pasteLastRow
+    copyLastRow = objWorkbookSheetRef.Cells(objWorkbookSheetRef.Rows.Count, 1).End(-4162).Row
+    pasteLastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row + 2
 
-' L (col 12) -> V (col 22)
-objWorkbookSheetRef.Range("L2:L" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("V" & pasteLastRow).PasteSpecial -4163
+    ' AP (col 42) -> D (col 4)
+    objWorkbookSheetRef.Range("AP2:AP" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("D" & pasteLastRow).PasteSpecial -4163
 
-' F (col 6) -> X (col 24)
-objWorkbookSheetRef.Range("F2:F" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("X" & pasteLastRow).PasteSpecial -4163
+    ' AG (col 33) -> E (col 5)
+    objWorkbookSheetRef.Range("AG2:AG" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("E" & pasteLastRow).PasteSpecial -4163
+    
+    'Iterar la columna E y validar si la longitud del valor del la celda es menor a 16 y si es asi, cortar los valores hacia la columna F
+    Dim cell, longcell
+    For Each cell In objWorkbookSheetRefL.Range("E" & pasteLastRow & ":E" & pasteLastRow + copyLastRow - 2)
+        ' Si el valor de la celda contiene el valor "pep" restar 3 a la longitud del valor de la celda
+        If InStr(1, cell.Value, "pep", vbTextCompare) > 0 Then
+            longcell = Left(cell.Value) - 3
+        Else
+            longcell = Len(cell.Value)
+        End If
+        If longcell < 16 Then
+            cell.Offset(0, 1).Value = cell.Value ' Mover el valor a la columna F
+            cell.Value = "" ' Limpiar la celda original
+        End If
+    Next
 
-' G (col 7) -> Y (col 25)
-objWorkbookSheetRef.Range("G2:G" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("Y" & pasteLastRow).PasteSpecial -4163
+    ' B (col 2) -> L (col 12)
+    RowCount = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row
+    
+    objWorkbookSheetRefL.Range("E" & pasteLastRow & ":E" & RowCount).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("L" & pasteLastRow).PasteSpecial -4163
 
-' H (col 8) -> Z (col 26)
-objWorkbookSheetRef.Range("H2:H" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("Z" & pasteLastRow).PasteSpecial -4163
+    ' AI (col 35) -> I (col 9)
+    objWorkbookSheetRef.Range("AI2:AI" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("I" & pasteLastRow).PasteSpecial -4163
 
-' I (col 9) -> AA (col 27)
-objWorkbookSheetRef.Range("I2:I" & copyLastRow).Copy
-objWorkbookSheetRefL.Range("AA" & pasteLastRow).PasteSpecial -4163
+    ' AH (col 34) -> M (col 13)
+    objWorkbookSheetRef.Range("AH2:AH" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("M" & pasteLastRow).PasteSpecial -4163
 
+    ' N (col 14) -> O (col 15)
+    objWorkbookSheetRef.Range("N2:N" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("O" & pasteLastRow).PasteSpecial -4163
+
+    ' AE (col 31) -> R (col 18)
+    objWorkbookSheetRef.Range("AE2:AE" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("R" & pasteLastRow).PasteSpecial -4163
+
+    ' L (col 12) -> V (col 22)
+    objWorkbookSheetRef.Range("L2:L" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("V" & pasteLastRow).PasteSpecial -4163
+
+    ' F (col 6) -> X (col 24)
+    objWorkbookSheetRef.Range("F2:F" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("X" & pasteLastRow).PasteSpecial -4163
+
+    ' G (col 7) -> Y (col 25)
+    objWorkbookSheetRef.Range("G2:G" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("Y" & pasteLastRow).PasteSpecial -4163
+
+    ' H (col 8) -> Z (col 26)
+    objWorkbookSheetRef.Range("H2:H" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("Z" & pasteLastRow).PasteSpecial -4163
+
+    ' I (col 9) -> AA (col 27)
+    objWorkbookSheetRef.Range("I2:I" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("AA" & pasteLastRow).PasteSpecial -4163
+
+    ' C (col 3) -> AG (col 33)
+    objWorkbookSheetRef.Range("C2:C" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("AG" & pasteLastRow).PasteSpecial -4163
+
+    ' D (col 4) -> AH (col 34)
+    objWorkbookSheetRef.Range("D2:D" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("AH" & pasteLastRow).PasteSpecial -4163
+
+    ' E (col 5) -> AI (col 35)
+    objWorkbookSheetRef.Range("E2:E" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("AI" & pasteLastRow).PasteSpecial -4163
+
+    ' K (col 11) -> AJ (col 36)
+    objWorkbookSheetRef.Range("K2:K" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("AJ" & pasteLastRow).PasteSpecial -4163
+
+    ' AO (col 41) -> AK (col 37)
+    objWorkbookSheetRef.Range("AO2:AO" & copyLastRow).SpecialCells(12).Copy
+    objWorkbookSheetRefL.Range("AK" & pasteLastRow).PasteSpecial -4163
+
+    objExcel.CutCopyMode = False
+
+    ' Realizar autofill de fórmulas en las columnas S, T, U, AD, AE de objWorkbookSheetRefL
+    
+    Dim fillLastRow
+    fillLastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row
+
+    ' S (col 19)
+    objWorkbookSheetRefL.Range("S7").AutoFill objWorkbookSheetRefL.Range("S7:S" & fillLastRow)
+    ' T (col 20)
+    objWorkbookSheetRefL.Range("T7").AutoFill objWorkbookSheetRefL.Range("T7:T" & fillLastRow)
+    ' U (col 21)
+    objWorkbookSheetRefL.Range("U7").AutoFill objWorkbookSheetRefL.Range("U7:U" & fillLastRow)
+    ' Q (col 17)
+    objWorkbookSheetRefL.Range("Q7").AutoFill objWorkbookSheetRefL.Range("Q7:Q" & fillLastRow)
+    ' W (col 23s)
+    objWorkbookSheetRefL.Range("W7").AutoFill objWorkbookSheetRefL.Range("W7:W" & fillLastRow)
+    ' AD (col 30)
+    objWorkbookSheetRefL.Range("AD7").AutoFill objWorkbookSheetRefL.Range("AD7:AD" & fillLastRow)
+    ' AE (col 31)
+    objWorkbookSheetRefL.Range("AE7").AutoFill objWorkbookSheetRefL.Range("AE7:AE" & fillLastRow)
+
+    ' Limpiar una fila vacía antes de pegar los datos
+    objWorkbookSheetRefL.Rows(pasteLastRow - 1).ClearContents
+
+    ' Rellenar con autofill el valor REP en la columna B de objWorkbookSheetRefL
+    Dim bStart, bEnd
+    bStart = pasteLastRow
+    bEnd = fillLastRow
+
+    ' Rellenar con autofill el valor "BLOQUE 29" en la columna A de objWorkbookSheetRefL
+    objWorkbookSheetRefL.Range("A" & bStart).Value = "BLOQUE 29"
+    objWorkbookSheetRefL.Range("A" & bStart & ":A" & bEnd).Value = "BLOQUE 29"
+    ' Rellenar con autofill el valor del proveedor actual en la columna B de objWorkbookSheetRefL
+    objWorkbookSheetRefL.Range("B" & bStart).Value = proveedores(i)
+    objWorkbookSheetRefL.Range("B" & bStart & ":B" & bEnd).Value = proveedores(i)
+
+    ' Rellenar con autofill el valor "Bloque 29, AP-CS-G10, Cuenca Salina / Administración General" en la columna AC de objWorkbookSheetRefL
+    objWorkbookSheetRefL.Range("AC" & bStart).Value = "Bloque 29, AP-CS-G10, Cuenca Salina / Administración General"
+    objWorkbookSheetRefL.Range("AC" & bStart & ":AC" & bEnd).Value = "Bloque 29, AP-CS-G10, Cuenca Salina / Administración General"
+    
+Next
+
+'____________________________________________________________________________________________________________________________________________
+
+' Encontrar la última fila con datos en la hoja de Layout refacturación
+LastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row
+
+' Aplicar negritas a un rango específico
+With objWorkbookSheetRefL.Range("A" & saveLastRow & ":B" & LastRow)
+    .Font.Bold = True
+End With
+
+' Aplicar All borders a un rago específico
+With objWorkbookSheetRefL.Range("C" & saveLastRow & ":AF" & LastRow)
+    .Borders.LineStyle = 1 ' xlContinuous
+    .Borders.Weight = 2 ' xlMedium
+End With
+
+' Crear un arreglo de columnas para aplicar el formato Right border
+Dim rightBorderCols
+rightBorderCols = Array("C", "D", "E", "K", "M", "N", "V", "W", "Z", "AC", "AF")
+' Aplicar Right border a las columnas especificadas
+Dim col
+For Each col In rightBorderCols
+    With objWorkbookSheetRefL.Range(col & saveLastRow & ":" & col & LastRow)
+        .Borders(10).LineStyle = 1 ' xlContinuous
+        .Borders(10).Weight = -4138 ' xlMedium
+    End With
+Next
+' Aplicar color de fondo a un rango específico
+With objWorkbookSheetRefL.Range("C" & saveLastRow & ":AF" & LastRow)
+    .Interior.Color = RGB(217, 225, 242) ' Color azul claro
+End With
+
+' Crear un nombre de hoja basado en la fecha y hora actual
+sheetName = "Layout " & Day(Now) & Month(Now) & Year(Now) & "_" & Second(Now)
+' Crear una copia de la hoja actual sobre el mismo libro
+If Not SheetExists(objWorkbookPathRef, sheetName) Then
+    objWorkbookSheetRefL.Copy objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count)
+    objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
+Else
+    objWorkbookPathRef.Sheets(sheetName).Delete
+    objWorkbookSheetRefL.Copy objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count)
+    objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
+End If
+
+Set objWorkbookSheetRefLN = objWorkbookPathRef.Worksheets(sheetName)
+
+' Copiar y pegar como valores todas las celdas de una hoja
+With objWorkbookSheetRefLN.UsedRange
+    .Copy
+    .PasteSpecial -4163 ' xlPasteValues
+End With
 objExcel.CutCopyMode = False
 
+MsgBox "Proceso de refacturación completado."
 
+'____________________________________________________________________________________________________________________________________________
 ' Función para validar si una hoja existe en un libro de Excel
 Function SheetExists(wb, sheetName)
     Dim s

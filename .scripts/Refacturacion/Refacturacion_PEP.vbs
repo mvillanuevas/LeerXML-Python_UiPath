@@ -1,0 +1,89 @@
+'On Error Resume Next
+
+'Set objArgs = WScript.Arguments
+
+'WorkbookPathRexmex = objArgs(0)
+'WorkbookSheetRexmex = objArgs(1)
+'WorkbookPathRef = objArgs(2)
+'WorkbookSheetRef = objArgs(3)
+'ActualMonth = objArgs(4)
+
+WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
+WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturación may-25.xlsx"
+ActualMonth = 3
+
+WorkbookSheetRexmex = "Cuenta Operativa"
+WorkbookSheetLayout = "Layout"
+
+'Genera un objeto de tipo Excel Application
+Set objExcel = CreateObject("Excel.Application")
+
+'Parámetro para indicar si se quiere visible la aplicación de Excel
+objExcel.Application.Visible = True
+'Evita movimiento de pantalla
+objExcel.Application.ScreenUpdating = True
+'Parámetro evitar mostrar pop ups de Excel
+objExcel.Application.DisplayAlerts = False
+
+'Abre libro Excel
+Set objWorkbookPathRef = objExcel.Workbooks.Open(WorkbookPathRef, 0)
+Set objWorkbookSheetRefL = objWorkbookPathRef.Worksheets(WorkbookSheetLayout)
+Set objWorkbookSheetRef = objWorkbookPathRef.Worksheets("BL29")
+
+' --- Optimización de rendimiento: lectura y escritura por lotes ---
+Dim wbsDict, wbsDictH, pepCounterDict
+Set wbsDict     = CreateObject("Scripting.Dictionary")
+Set wbsDictH    = CreateObject("Scripting.Dictionary")
+Set pepCounterDict = CreateObject("Scripting.Dictionary")
+
+Dim data, rowNum, totalRows
+Dim wbsValue, agValue, sKey
+Dim results()
+
+' Leer todas las filas a un array (más rápido que trabajar directo con Cells)
+data = objWorkbookSheetRef.Range("A2:AV" & lastRow).Value ' A = col 1, AG = col 33
+totalRows = UBound(data, 1)
+ReDim results(totalRows) ' Guardar filas que se deben ocultar
+
+For rowNum = 1 To totalRows ' Ya que empezamos en A2, este es índice 1
+    wbsValue = Trim(data(rowNum, 3))     ' Columna C
+    agValue  = Trim(data(rowNum, 33))    ' Columna AG
+    
+    If wbsValue <> "" And agValue <> "" Then
+        sKey = agValue & "|" & wbsValue
+
+        ' Contador por UUID
+        If Not wbsDict.Exists(agValue) Then
+            wbsDict.Add agValue, 1
+            pepCounterDict.Add agValue, 0
+        Else
+            pepCounterDict(agValue) = pepCounterDict(agValue) + 1
+            data(rowNum, 33) = agValue & " pep" & pepCounterDict(agValue)
+            results(rowNum) = True ' Marcar para ocultar
+        End If
+
+        ' Duplicado exacto UUID + WBS
+        If wbsDictH.Exists(sKey) Then
+            results(rowNum) = True ' Marcar para ocultar
+        Else
+            wbsDictH.Add sKey, 1
+        End If
+    End If
+Next
+
+' Escribir los datos modificados de vuelta
+objWorkbookSheetRef.Range("A2:AG" & lastRow).Value = data
+
+' Ocultar filas en un solo paso
+For rowNum = 1 To totalRows
+    If results(rowNum) = True Then
+        objWorkbookSheetRef.Rows(rowNum + 1).Hidden = True ' +1 por offset a partir de fila 2
+    End If
+Next
+
+
+' Guardar y cerrar el libro de refacturación
+objWorkbookPathRef.Save
+objWorkbookPathRef.Close
+' Cerrar la aplicación de Excel
+objExcel.Quit
