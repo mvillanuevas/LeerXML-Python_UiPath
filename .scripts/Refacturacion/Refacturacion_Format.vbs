@@ -7,9 +7,10 @@ WorkbookPathRef = objArgs(1)
 ActualMonth = objArgs(2)
 saveLastRow = objArgs(3)
 
-'WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturación may-25.xlsx"
-'ActualMonth = 3
+'WorkbookPathRexmex = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\REXMEX - Cuenta Operativa 2025_120525.xlsx"
+'WorkbookPathRef = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\Layout refacturación may-25.xlsx"
+'ActualMonth = "3"
+'saveLastRow = "843"
 
 WorkbookSheetRexmex = "Cuenta Operativa"
 WorkbookSheetLayout = "Layout"
@@ -28,6 +29,7 @@ objExcel.Application.DisplayAlerts = False
 Set objWorkbookPathRef = objExcel.Workbooks.Open(WorkbookPathRef, 0)
 Set objWorkbookSheetRefL = objWorkbookPathRef.Worksheets(WorkbookSheetLayout)
 
+saveLastRow = CInt(saveLastRow)
 ' Encontrar la última fila con datos en la hoja de Layout refacturación
 LastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row
 
@@ -63,11 +65,11 @@ sheetName = "Layout " & Day(Now) & Month(Now) & Year(Now) & "_" & Second(Now)
 ' Crear una copia de la hoja actual sobre el mismo libro
 If Not SheetExists(objWorkbookPathRef, sheetName) Then
     objWorkbookSheetRefL.Copy objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count)
-    objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
+    'objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
 Else
     objWorkbookPathRef.Sheets(sheetName).Delete
     objWorkbookSheetRefL.Copy objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count)
-    objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
+    'objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
 End If
 
 Set objWorkbookSheetRefLN = objWorkbookPathRef.Worksheets(sheetName)
@@ -78,21 +80,6 @@ With objWorkbookSheetRefLN.UsedRange
     .PasteSpecial -4163 ' xlPasteValues
 End With
 objExcel.CutCopyMode = False
-
-MsgBox "Proceso de refacturación completado."
-
-'____________________________________________________________________________________________________________________________________________
-' Función para validar si una hoja existe en un libro de Excel
-Function SheetExists(wb, sheetName)
-    Dim s
-    SheetExists = False
-    For Each s In wb.Sheets
-        If StrComp(s.Name, sheetName, vbTextCompare) = 0 Then
-            SheetExists = True
-            Exit Function
-        End If
-    Next
-End Function
 
 ' Guardar y cerrar el libro de refacturación
 objWorkbookPathRef.Save
@@ -109,3 +96,16 @@ If Err.Number <> 0 Then
 Else
     WScript.StdOut.WriteLine "Script executed successfully."
 End if
+
+'____________________________________________________________________________________________________________________________________________
+' Función para validar si una hoja existe en un libro de Excel
+Function SheetExists(wb, sheetName)
+    Dim s
+    SheetExists = False
+    For Each s In wb.Sheets
+        If StrComp(s.Name, sheetName, vbTextCompare) = 0 Then
+            SheetExists = True
+            Exit Function
+        End If
+    Next
+End Function
