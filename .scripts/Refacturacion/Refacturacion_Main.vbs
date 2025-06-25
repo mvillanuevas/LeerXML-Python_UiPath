@@ -7,7 +7,7 @@ WorkbookPathRef = objArgs(1)
 ActualMonth = objArgs(2)
 
 'WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci贸n may-25.xlsx"
+'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci髇 may-25.xlsx"
 'ActualMonth = 3
 
 WorkbookSheetRexmex = "Cuenta Operativa"
@@ -16,11 +16,11 @@ WorkbookSheetLayout = "Layout"
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'Par谩metro para indicar si se quiere visible la aplicaci贸n de Excel
-objExcel.Application.Visible = True
+'Par醡etro para indicar si se quiere visible la aplicaci髇 de Excel
+objExcel.Application.Visible = False
 'Evita movimiento de pantalla
-objExcel.Application.ScreenUpdating = True
-'Par谩metro evitar mostrar pop ups de Excel
+objExcel.Application.ScreenUpdating = False
+'Par醡etro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
@@ -30,22 +30,22 @@ Set objWorkbookSheetRefL = objWorkbookPathRef.Worksheets(WorkbookSheetLayout)
 Set objWorkbookPathRexmex = objExcel.Workbooks.Open(WorkbookPathRexmex, 0)
 Set objWorkbookSheetRexmex = objWorkbookPathRexmex.Worksheets(WorkbookSheetRexmex)
 
-' Arreglo de hojas de refacturaci贸n
+' Arreglo de hojas de refacturaci髇
 Dim refacturacionSheets, bloque
 refacturacionSheets = Array("BL29", "BL10", "BL11", "BL14")
 
-' Iteraer sobre las hojas de refacturaci贸n
+' Iteraer sobre las hojas de refacturaci髇
 Dim i
 
 For i = LBound(refacturacionSheets) To UBound(refacturacionSheets)
     Dim sheetName
     sheetName = refacturacionSheets(i)
     
-    ' Verificar si la hoja existe en el libro de refacturaci贸n
+    ' Verificar si la hoja existe en el libro de refacturaci髇
     If SheetExists(objWorkbookPathRef, sheetName) Then
         Set objWorkbookSheetRef = objWorkbookPathRef.Worksheets(sheetName)
 
-        ' Verificar si los filtros est谩n activos en la fila 1, si no, activarlos
+        ' Verificar si los filtros est醤 activos en la fila 1, si no, activarlos
         If objWorkbookSheetRexmex.AutoFilterMode Then
             objWorkbookSheetRexmex.AutoFilterMode = False
         End If
@@ -62,7 +62,7 @@ For i = LBound(refacturacionSheets) To UBound(refacturacionSheets)
         primerDiaMes = Right("0" & Month(primerDiaMes),2) & "-" & Right("0" & Day(primerDiaMes),2) & "-" & Year(primerDiaMes)
 
 
-        ' Encontrar la 煤ltima fila con datos en la columna a filtrar 
+        ' Encontrar la 鷏tima fila con datos en la columna a filtrar 
         lastRow = objWorkbookSheetRexmex.Cells(objWorkbookSheetRexmex.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
 
         objWorkbookSheetRexmex.Range(objWorkbookSheetRexmex.Cells(1, 27), objWorkbookSheetRexmex.Cells(lastRow, 27)).AutoFilter _
@@ -79,7 +79,7 @@ For i = LBound(refacturacionSheets) To UBound(refacturacionSheets)
         
         Set dRange = objWorkbookSheetRexmex.Range(objWorkbookSheetRexmex.Cells(2, 24), objWorkbookSheetRexmex.Cells(lastRow, 71)).SpecialCells(12)
 
-        ' Encontrar la 煤ltima fila con datos en la hoja de Layout refacturaci贸n
+        ' Encontrar la 鷏tima fila con datos en la hoja de Layout refacturaci髇
         lastRowR = objWorkbookSheetRef.Cells(objWorkbookSheetRef.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
 
         ' Copiar los valores de las celdas visibles a la hoja de REXMEX
@@ -96,7 +96,7 @@ For i = LBound(refacturacionSheets) To UBound(refacturacionSheets)
     End If
 Next
 
-' Encontrar la 煤ltima fila con datos en la hoja de Layout refacturaci贸n
+' Encontrar la 鷏tima fila con datos en la hoja de Layout refacturaci髇
 lastRowL = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
 
 ' Ocultar las filas que no cumplen con el criterio de la columna 1 (BL29)
@@ -108,16 +108,16 @@ For j = 7 To lastRowL
 Next
 
 Set objWorkbookSheetRef = objWorkbookPathRef.Worksheets("BL29")
-' Encontrar la 煤ltima fila con datos en la columna a filtrar 
+' Encontrar la 鷏tima fila con datos en la columna a filtrar 
 lastRow = objWorkbookSheetRef.Cells(objWorkbookSheetRef.Rows.Count, 1).End(-4162).Row ' -4162 = xlUp
-MsgBox "脷ltima fila con datos en BL29: " & lastRow
+
 'Aplica Text to columns en formate General
 objWorkbookSheetRef.Range("AG:AG").TextToColumns
 ' Ordenar de manera ascendente la columna AG (columna 33) "UUID"
 With objWorkbookSheetRef.Sort
     .SortFields.Clear
     .SortFields.Add objWorkbookSheetRef.Range("AG2:AG" & lastRow), 0, 1 ' 0 = xlSortOnValues, 1 = xlAscending
-    .SetRange objWorkbookSheetRef.Range("A1:AV" & lastRow) ' Ajusta el rango seg煤n tus datos
+    .SetRange objWorkbookSheetRef.Range("A1:AV" & lastRow) ' Ajusta el rango seg鷑 tus datos
     .Header = 1 ' 1 = xlYes (hay encabezado)
     .Apply
 End With
@@ -126,10 +126,10 @@ End With
 objWorkbookPathRexmex.Save
 objWorkbookPathRexmex.Close
 
-' Guardar y cerrar el libro de refacturaci贸n
+' Guardar y cerrar el libro de refacturaci髇
 objWorkbookPathRef.Save
 objWorkbookPathRef.Close
-' Cerrar la aplicaci贸n de Excel
+' Cerrar la aplicaci髇 de Excel
 objExcel.Quit
 
 'Devuelve el error en caso de
@@ -139,7 +139,7 @@ If Err.Number <> 0 Then
 End if
 
 '____________________________________________________________________________________________________________________________________________
-' Funci贸n para validar si una hoja existe en un libro de Excel
+' Funci髇 para validar si una hoja existe en un libro de Excel
 Function SheetExists(wb, sheetName)
     Dim s
     SheetExists = False

@@ -6,8 +6,8 @@ WorkbookPathRexmex = objArgs(0)
 WorkbookPathRef = objArgs(1)
 ActualMonth = objArgs(2)
 
-'WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci贸n may-25.xlsx"
+'WorkbookPathRexmex = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\REXMEX - Cuenta Operativa 2025_120525.xlsx"
+'WorkbookPathRef = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\Layout refacturaci髇 may-25.xlsx"
 'ActualMonth = 3
 
 WorkbookSheetRexmex = "Cuenta Operativa"
@@ -16,11 +16,11 @@ WorkbookSheetLayout = "Layout"
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'Par谩metro para indicar si se quiere visible la aplicaci贸n de Excel
-objExcel.Application.Visible = True
+'Par醡etro para indicar si se quiere visible la aplicaci髇 de Excel
+objExcel.Application.Visible = False
 'Evita movimiento de pantalla
-objExcel.Application.ScreenUpdating = True
-'Par谩metro evitar mostrar pop ups de Excel
+objExcel.Application.ScreenUpdating = False
+'Par醡etro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
@@ -28,14 +28,14 @@ Set objWorkbookPathRef = objExcel.Workbooks.Open(WorkbookPathRef, 0)
 Set objWorkbookSheetRefL = objWorkbookPathRef.Worksheets(WorkbookSheetLayout)
 Set objWorkbookSheetRef = objWorkbookPathRef.Worksheets("BL29")
 
-' Arreglo de hojas de refacturaci贸n
+' Arreglo de hojas de refacturaci髇
 Dim proveedores
 proveedores = Array("PC CARIGALI", "PTTEP", "REPSOL", "SIERRA NEVADA")
 
 saveLastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row + 1
 
 For i = LBound(proveedores) To UBound(proveedores)
-    ' Copiar columnas espec铆ficas de objWorkbookSheetRef a objWorkbookSheetRefL
+    ' Copiar columnas espec韋icas de objWorkbookSheetRef a objWorkbookSheetRefL
 
     Dim copyLastRow, pasteLastRow
     copyLastRow = objWorkbookSheetRef.Cells(objWorkbookSheetRef.Rows.Count, 1).End(-4162).Row
@@ -128,7 +128,7 @@ For i = LBound(proveedores) To UBound(proveedores)
 
     objExcel.CutCopyMode = False
 
-    ' Realizar autofill de f贸rmulas en las columnas S, T, U, AD, AE de objWorkbookSheetRefL
+    ' Realizar autofill de f髍mulas en las columnas S, T, U, AD, AE de objWorkbookSheetRefL
     
     Dim fillLastRow
     fillLastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row
@@ -148,7 +148,7 @@ For i = LBound(proveedores) To UBound(proveedores)
     ' AE (col 31)
     objWorkbookSheetRefL.Range("AE7").AutoFill objWorkbookSheetRefL.Range("AE7:AE" & fillLastRow)
 
-    ' Limpiar una fila vac铆a antes de pegar los datos
+    ' Limpiar una fila vac韆 antes de pegar los datos
     objWorkbookSheetRefL.Rows(pasteLastRow - 1).ClearContents
 
     ' Rellenar con autofill el valor REP en la columna B de objWorkbookSheetRefL
@@ -163,17 +163,19 @@ For i = LBound(proveedores) To UBound(proveedores)
     objWorkbookSheetRefL.Range("B" & bStart).Value = proveedores(i)
     objWorkbookSheetRefL.Range("B" & bStart & ":B" & bEnd).Value = proveedores(i)
 
-    ' Rellenar con autofill el valor "Bloque 29, AP-CS-G10, Cuenca Salina / Administraci贸n General" en la columna AC de objWorkbookSheetRefL
-    objWorkbookSheetRefL.Range("AC" & bStart).Value = "Bloque 29, AP-CS-G10, Cuenca Salina / Administraci贸n General"
-    objWorkbookSheetRefL.Range("AC" & bStart & ":AC" & bEnd).Value = "Bloque 29, AP-CS-G10, Cuenca Salina / Administraci贸n General"
+    ' Rellenar con autofill el valor "Bloque 29, AP-CS-G10, Cuenca Salina / Administraci髇 General" en la columna AC de objWorkbookSheetRefL
+    objWorkbookSheetRefL.Range("AC" & bStart).Value = "Bloque 29, AP-CS-G10, Cuenca Salina / Administraci髇 General"
+    objWorkbookSheetRefL.Range("AC" & bStart & ":AC" & bEnd).Value = "Bloque 29, AP-CS-G10, Cuenca Salina / Administraci髇 General"
     
 Next
 
-' Guardar y cerrar el libro de refacturaci贸n
+' Guardar y cerrar el libro de refacturaci髇
 objWorkbookPathRef.Save
 objWorkbookPathRef.Close
-' Cerrar la aplicaci贸n de Excel
+' Cerrar la aplicaci髇 de Excel
 objExcel.Quit
+
+WScript.Echo saveLastRow
 
 'Devuelve el error en caso de
 If Err.Number <> 0 Then

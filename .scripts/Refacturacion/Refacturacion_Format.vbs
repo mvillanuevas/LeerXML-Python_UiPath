@@ -5,9 +5,10 @@ Set objArgs = WScript.Arguments
 WorkbookPathRexmex = objArgs(0)
 WorkbookPathRef = objArgs(1)
 ActualMonth = objArgs(2)
+saveLastRow = objArgs(3)
 
 'WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci贸n may-25.xlsx"
+'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci髇 may-25.xlsx"
 'ActualMonth = 3
 
 WorkbookSheetRexmex = "Cuenta Operativa"
@@ -16,26 +17,26 @@ WorkbookSheetLayout = "Layout"
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'Par谩metro para indicar si se quiere visible la aplicaci贸n de Excel
-objExcel.Application.Visible = True
+'Par醡etro para indicar si se quiere visible la aplicaci髇 de Excel
+objExcel.Application.Visible = False
 'Evita movimiento de pantalla
-objExcel.Application.ScreenUpdating = True
-'Par谩metro evitar mostrar pop ups de Excel
+objExcel.Application.ScreenUpdating = False
+'Par醡etro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
 Set objWorkbookPathRef = objExcel.Workbooks.Open(WorkbookPathRef, 0)
 Set objWorkbookSheetRefL = objWorkbookPathRef.Worksheets(WorkbookSheetLayout)
 
-' Encontrar la 煤ltima fila con datos en la hoja de Layout refacturaci贸n
+' Encontrar la 鷏tima fila con datos en la hoja de Layout refacturaci髇
 LastRow = objWorkbookSheetRefL.Cells(objWorkbookSheetRefL.Rows.Count, 4).End(-4162).Row
 
-' Aplicar negritas a un rango espec铆fico
+' Aplicar negritas a un rango espec韋ico
 With objWorkbookSheetRefL.Range("A" & saveLastRow & ":B" & LastRow)
     .Font.Bold = True
 End With
 
-' Aplicar All borders a un rago espec铆fico
+' Aplicar All borders a un rago espec韋ico
 With objWorkbookSheetRefL.Range("C" & saveLastRow & ":AF" & LastRow)
     .Borders.LineStyle = 1 ' xlContinuous
     .Borders.Weight = 2 ' xlMedium
@@ -52,7 +53,7 @@ For Each col In rightBorderCols
         .Borders(10).Weight = -4138 ' xlMedium
     End With
 Next
-' Aplicar color de fondo a un rango espec铆fico
+' Aplicar color de fondo a un rango espec韋ico
 With objWorkbookSheetRefL.Range("C" & saveLastRow & ":AF" & LastRow)
     .Interior.Color = RGB(217, 225, 242) ' Color azul claro
 End With
@@ -78,10 +79,10 @@ With objWorkbookSheetRefLN.UsedRange
 End With
 objExcel.CutCopyMode = False
 
-MsgBox "Proceso de refacturaci贸n completado."
+MsgBox "Proceso de refacturaci髇 completado."
 
 '____________________________________________________________________________________________________________________________________________
-' Funci贸n para validar si una hoja existe en un libro de Excel
+' Funci髇 para validar si una hoja existe en un libro de Excel
 Function SheetExists(wb, sheetName)
     Dim s
     SheetExists = False
@@ -93,10 +94,10 @@ Function SheetExists(wb, sheetName)
     Next
 End Function
 
-' Guardar y cerrar el libro de refacturaci贸n
+' Guardar y cerrar el libro de refacturaci髇
 objWorkbookPathRef.Save
 objWorkbookPathRef.Close
-' Cerrar la aplicaci贸n de Excel
+' Cerrar la aplicaci髇 de Excel
 objExcel.Quit
 
 'Devuelve el error en caso de

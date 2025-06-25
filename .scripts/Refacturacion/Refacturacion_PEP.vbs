@@ -7,7 +7,7 @@ WorkbookPathRef = objArgs(1)
 ActualMonth = objArgs(2)
 
 'WorkbookPathRexmex = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci贸n may-25.xlsx"
+'WorkbookPathRef = "C:\Users\HE678HU\OneDrive - EY\.Repsol\Reporte Regulatorio\4 - Abril\Files\Layout refacturaci髇 may-25.xlsx"
 'ActualMonth = 3
 
 WorkbookSheetRexmex = "Cuenta Operativa"
@@ -16,11 +16,11 @@ WorkbookSheetLayout = "Layout"
 'Genera un objeto de tipo Excel Application
 Set objExcel = CreateObject("Excel.Application")
 
-'Par谩metro para indicar si se quiere visible la aplicaci贸n de Excel
-objExcel.Application.Visible = True
+'Par醡etro para indicar si se quiere visible la aplicaci髇 de Excel
+objExcel.Application.Visible = False
 'Evita movimiento de pantalla
-objExcel.Application.ScreenUpdating = True
-'Par谩metro evitar mostrar pop ups de Excel
+objExcel.Application.ScreenUpdating = False
+'Par醡etro evitar mostrar pop ups de Excel
 objExcel.Application.DisplayAlerts = False
 
 'Abre libro Excel
@@ -28,7 +28,7 @@ Set objWorkbookPathRef = objExcel.Workbooks.Open(WorkbookPathRef, 0)
 Set objWorkbookSheetRefL = objWorkbookPathRef.Worksheets(WorkbookSheetLayout)
 Set objWorkbookSheetRef = objWorkbookPathRef.Worksheets("BL29")
 
-' --- Optimizaci贸n de rendimiento: lectura y escritura por lotes ---
+' --- Optimizaci髇 de rendimiento: lectura y escritura por lotes ---
 Dim wbsDict, wbsDictH, pepCounterDict
 Set wbsDict     = CreateObject("Scripting.Dictionary")
 Set wbsDictH    = CreateObject("Scripting.Dictionary")
@@ -38,12 +38,12 @@ Dim data, rowNum, totalRows
 Dim wbsValue, agValue, sKey
 Dim results()
 
-' Leer todas las filas a un array (m谩s r谩pido que trabajar directo con Cells)
+' Leer todas las filas a un array (m醩 r醦ido que trabajar directo con Cells)
 data = objWorkbookSheetRef.Range("A2:AV" & lastRow).Value ' A = col 1, AG = col 33
 totalRows = UBound(data, 1)
 ReDim results(totalRows) ' Guardar filas que se deben ocultar
 
-For rowNum = 1 To totalRows ' Ya que empezamos en A2, este es 铆ndice 1
+For rowNum = 1 To totalRows ' Ya que empezamos en A2, este es 韓dice 1
     wbsValue = Trim(data(rowNum, 3))     ' Columna C
     agValue  = Trim(data(rowNum, 33))    ' Columna AG
     
@@ -79,10 +79,10 @@ For rowNum = 1 To totalRows
     End If
 Next
 
-' Guardar y cerrar el libro de refacturaci贸n
+' Guardar y cerrar el libro de refacturaci髇
 objWorkbookPathRef.Save
 objWorkbookPathRef.Close
-' Cerrar la aplicaci贸n de Excel
+' Cerrar la aplicaci髇 de Excel
 objExcel.Quit
 
 'Devuelve el error en caso de
