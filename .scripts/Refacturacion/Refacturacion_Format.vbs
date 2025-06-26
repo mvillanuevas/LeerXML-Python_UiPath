@@ -62,14 +62,17 @@ End With
 
 ' Crear un nombre de hoja basado en la fecha y hora actual
 sheetName = "Layout " & Day(Now) & Month(Now) & Year(Now) & "_" & Second(Now)
+
 ' Crear una copia de la hoja actual sobre el mismo libro
 If Not SheetExists(objWorkbookPathRef, sheetName) Then
     objWorkbookSheetRefL.Copy objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count)
-    'objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
+    Set objSheetCopy = objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count - 1)
+    objSheetCopy.Name = sheetName
 Else
     objWorkbookPathRef.Sheets(sheetName).Delete
     objWorkbookSheetRefL.Copy objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count)
-    'objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count).Name = sheetName
+    Set objSheetCopy = objWorkbookPathRef.Sheets(objWorkbookPathRef.Sheets.Count - 1)
+    objSheetCopy.Name = sheetName
 End If
 
 Set objWorkbookSheetRefLN = objWorkbookPathRef.Worksheets(sheetName)
