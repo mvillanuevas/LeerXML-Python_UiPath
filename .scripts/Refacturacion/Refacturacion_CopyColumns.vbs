@@ -1,14 +1,14 @@
-'On Error Resume Next
+On Error Resume Next
 
-'Set objArgs = WScript.Arguments
+Set objArgs = WScript.Arguments
 
-'WorkbookPathRexmex = objArgs(0)
-'WorkbookPathRef = objArgs(1)
-'ActualMonth = objArgs(2)
+WorkbookPathRexmex = objArgs(0)
+WorkbookPathRef = objArgs(1)
+ActualMonth = objArgs(2)
 
-WorkbookPathRexmex = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-WorkbookPathRef = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\Layout refacturación may-25.xlsx"
-ActualMonth = 3
+'WorkbookPathRexmex = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\REXMEX - Cuenta Operativa 2025_120525.xlsx"
+'WorkbookPathRef = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\Layout refacturación may-25.xlsx"
+'ActualMonth = 3
 
 WorkbookSheetRexmex = "Cuenta Operativa"
 WorkbookSheetLayout = "Layout"
