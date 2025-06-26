@@ -1,14 +1,14 @@
-On Error Resume Next
+'On Error Resume Next
 
-Set objArgs = WScript.Arguments
+'Set objArgs = WScript.Arguments
 
-WorkbookPathRexmex = objArgs(0)
-WorkbookPathRef = objArgs(1)
-ActualMonth = objArgs(2)
+'WorkbookPathRexmex = objArgs(0)
+'WorkbookPathRef = objArgs(1)
+'ActualMonth = objArgs(2)
 
-'WorkbookPathRexmex = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\REXMEX - Cuenta Operativa 2025_120525.xlsx"
-'WorkbookPathRef = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\Layout refacturación may-25.xlsx"
-'ActualMonth = 3
+WorkbookPathRexmex = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\REXMEX - Cuenta Operativa 2025_120525.xlsx"
+WorkbookPathRef = "C:\Users\se109874\OneDrive - Repsol\Documentos\Refacturacion\Layout refacturación may-25.xlsx"
+ActualMonth = 3
 
 WorkbookSheetRexmex = "Cuenta Operativa"
 WorkbookSheetLayout = "Layout"
@@ -54,7 +54,7 @@ For i = LBound(proveedores) To UBound(proveedores)
     For Each cell In objWorkbookSheetRefL.Range("E" & pasteLastRow & ":E" & pasteLastRow + copyLastRow - 2)
         ' Si el valor de la celda contiene el valor "pep" restar 3 a la longitud del valor de la celda
         If InStr(1, cell.Value, "pep", vbTextCompare) > 0 Then
-            longcell = Left(cell.Value) - 3
+            longcell = Len(cell.value) - 3
         Else
             longcell = Len(cell.Value)
         End If
