@@ -5,7 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Python.Activities": "[1.10.0]",
-    "UiPath.System.Activities": "[25.4.3]",
+    "UiPath.System.Activities": "[25.4.4]",
     "UiPath.WebAPI.Activities": "[1.21.1]"
   },
   "webServices": [],

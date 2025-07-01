@@ -47,6 +47,9 @@ If Not IMSS Is Nothing Then
         WorkbookSheetNomina.Rows(IMSS.Row).AutoFilter
     End If
 
+    FComprobante = WorkbookSheetNomina.Cells(IMSS.Row, 8).Value
+    DPago = WorkbookSheetNomina.Cells(IMSS.Row, 7).Value
+
     dim filesys
     Set filesys = CreateObject("Scripting.FileSystemObject")
     nombreArchivo = filesys.GetFileName(WorkbookPathN)
@@ -106,6 +109,8 @@ If Not IMSS Is Nothing Then
                 WorkbookSheetRexmex.Cells(lastRowR + j, 16).Value = nombreArchivo
                 'WorkbookSheetRexmex.Cells(lastRowR + j, 34).Value = "Repsol Exploracion Mexico, S.A de C.V."
                 WorkbookSheetRexmex.Cells(lastRowR + j, 61).Value = ""
+                WorkbookSheetRexmex.Cells(lastRowR + j, 57).Value = FComprobante
+                WorkbookSheetRexmex.Cells(lastRowR + j, 60).Value = DPago
             Next
             
             ' Copiar los valores de las celdas visibles a la hoja de REXMEX

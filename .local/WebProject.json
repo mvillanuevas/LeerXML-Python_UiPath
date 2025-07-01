@@ -5,7 +5,7 @@
     "ProjectType": "Process",
     "Name": "Leer_Facturas_Nomina",
     "Description": "Nomina",
-    "LastModifiedTime": "2025-06-25T15:12:29.6579058Z",
+    "LastModifiedTime": "2025-06-30T17:40:54.3104498Z",
     "CreationTime": "2025-05-28T21:07:21.2846275Z",
     "UserId": "98c30eea-170d-45bc-b7dd-971ddee93ae8",
     "RootFolder": {
@@ -45,7 +45,57 @@
         {
           "Id": "32edf252-a4f4-4682-af44-34ffeab8b666",
           "Name": ".scripts",
-          "Folders": [],
+          "Folders": [
+            {
+              "Id": "f5c7ca63-7850-4a9d-bbe5-d12e66093b93",
+              "Name": "Cuenta Operativa",
+              "Folders": [],
+              "Files": [
+                {
+                  "Id": "5a4531bc-1851-46db-8a5b-2b1a165fed61",
+                  "Name": "CuentaOperativaPEP.vbs",
+                  "IsMain": false
+                },
+                {
+                  "Id": "977caad8-f656-4dbb-a3ed-053d84bfcebf",
+                  "Name": "CuentaOperativaIMSS.vbs",
+                  "IsMain": false
+                },
+                {
+                  "Id": "eac61ee4-a937-4e51-9361-201e66dc4174",
+                  "Name": "CuentaOperativaISN.vbs",
+                  "IsMain": false
+                }
+              ]
+            },
+            {
+              "Id": "e84d89b6-3f95-496d-8635-537890953d65",
+              "Name": "Refacturacion",
+              "Folders": [],
+              "Files": [
+                {
+                  "Id": "2526f128-717e-4235-a948-2f61efbb2c0f",
+                  "Name": "Refacturacion_Main.vbs",
+                  "IsMain": false
+                },
+                {
+                  "Id": "75daa135-3400-4ce9-a2aa-4518846f3a0e",
+                  "Name": "Refacturacion_Format.vbs",
+                  "IsMain": false
+                },
+                {
+                  "Id": "203a96ff-8925-48fd-b982-612b09f1a9e6",
+                  "Name": "Refacturacion_PEP.vbs",
+                  "IsMain": false
+                },
+                {
+                  "Id": "63f9ea10-c5c8-4dc3-91c8-b717b37c431a",
+                  "Name": "Refacturacion_CopyColumns.vbs",
+                  "IsMain": false
+                }
+              ]
+            }
+          ],
           "Files": [
             {
               "Id": "99edbfb1-60f0-4b11-818a-9777af21802d",
@@ -68,11 +118,6 @@
               "IsMain": false
             },
             {
-              "Id": "703c3788-5c91-4412-b262-d46627f5f2dc",
-              "Name": "CuentaOperativaPEP.vbs",
-              "IsMain": false
-            },
-            {
               "Id": "ed7b0319-5762-4f27-adc7-af96677333eb",
               "Name": "PersonaFisica.vbs",
               "IsMain": false
@@ -80,16 +125,6 @@
             {
               "Id": "14a4ea64-3aed-4bb9-b043-1d09d7ef0a90",
               "Name": "BloquePorcentual.vbs",
-              "IsMain": false
-            },
-            {
-              "Id": "501cd89e-a1bd-4920-b927-252a33ebffe3",
-              "Name": "CuentaOperativaIMSS.vbs",
-              "IsMain": false
-            },
-            {
-              "Id": "6945e474-8b31-448f-83ce-b4483c94d6e6",
-              "Name": "CuentaOperativaISN.vbs",
               "IsMain": false
             },
             {
@@ -127,6 +162,18 @@
           ]
         },
         {
+          "Id": "12667a49-97d9-4bd6-a85d-66f5dcab1fc7",
+          "Name": ".tmh",
+          "Folders": [],
+          "Files": [
+            {
+              "Id": "2f8ad90b-9dce-4394-a03c-b9793591c29f",
+              "Name": "config.json",
+              "IsMain": false
+            }
+          ]
+        },
+        {
           "Id": "d95cd020-fa10-4339-8030-e14168318a51",
           "Name": ".temp",
           "Folders": [],
@@ -139,6 +186,18 @@
             {
               "Id": "617e3dae-56ac-4b4d-a9b6-611934fd75c2",
               "Name": "new 1.txt",
+              "IsMain": false
+            }
+          ]
+        },
+        {
+          "Id": "62242482-77bd-43a8-bc45-189690c17a51",
+          "Name": ".vscode",
+          "Folders": [],
+          "Files": [
+            {
+              "Id": "cabc551c-6b1d-4883-a7d0-6d626fe8aa01",
+              "Name": "settings.json",
               "IsMain": false
             }
           ]
@@ -207,31 +266,37 @@
     "DisableAutoUpdate": false
   },
   "OriginalFilesHash": {
-    "EscribirNomina.xaml": "YjLteWaQ5DdBuEbV7JYXxdNQhycTuKN4DYL88Gzq+gQ=",
-    "Main.xaml": "V0R+3PApeMc8IREq1bzOgqUgd3HgdwNgvUAb7p8V8XA=",
-    ".project/PackageBindingsMetadata.json": "J8WxptCIP4OypCp+TsiVwBL7Ny/aIDyx+0uMgps3pN8=",
-    ".settings/Debug/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
     "project.json": "EBJjLUyBmnFMkeWMbqScfX6Jj24xkAyundKdW0i7bS8=",
-    ".scripts/PersonaFisica.vbs": "0zMsh6YhkbEbSVWlXuWyLSN6D2OoOu5zI6Cm1yL6ekw=",
-    ".scripts/ISN.vbs": "9ZImBPrtzFOSLKmedsTRZ5OXGdxYz6mEifOVuPe8JXQ=",
-    "Bloque29.xaml": "mOgYSnyx/BdB1Et9zw7YnslOh6ab5s+yp9DiW4PChkU=",
-    ".scripts/FiltrarCuentaOperativa.vbs": "6+ajovE18NUabW89/NCZxQa/FMiz6nr9DYE2RF883VU=",
-    ".temp/new 1.txt": "rh89GhmDTKlxolH0z3iahS19HtxF+gSU4X6qaui9fnc=",
-    "LeerFacturaNomina.xaml": "noRW3GJTTJJqoHT44nm13MHd/v7xbyCCsd12W89At2w=",
+    ".project/PackageBindingsMetadata.json": "J8WxptCIP4OypCp+TsiVwBL7Ny/aIDyx+0uMgps3pN8=",
     ".scripts/BloquePorcentual.vbs": "L60Nu66TCCImxeNfliCrUjhPwNud/bh79hSuB1NZXAY=",
-    ".scripts/CuentaOperativaISN.vbs": "ki9XW139KDvpb2S/PNjYkD0+zS4/xvm7iFl5R/oOKWY=",
-    ".temp/new 2.txt": "nSH3uRUNqhJaxhMNSK0meOiFSM4eYI2q5J+Yxh2ymS4=",
+    ".settings/Debug/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
+    "Main.xaml": "V0R+3PApeMc8IREq1bzOgqUgd3HgdwNgvUAb7p8V8XA=",
+    ".scripts/Refacturacion/Refacturacion_Format.vbs": "/y936BJ+zQQM+6C4By5DfAwGdFsxEylxFOeNhH6ehx4=",
     ".settings/Release/settings-9e9290da.json": "7PjBQcYPpDS7UhN/HydlT7QCRIsBYnPNtHuFFBOcfg8=",
-    ".scripts/CuentaOperativaIMSS.vbs": "tO6KM8/bYtjA7GXoV7u0kIYtbb/7mMyDy9AaAYzYT/g=",
-    ".templates/Catalogo Bloques.xlsx": "1BRZdLc9oq0qAOYNQLDro9XxPQj3JTh9xwEKYZ+21tg=",
-    ".project/globalVariables.json": "T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU=",
-    ".scripts/ImportTxT.vbs": "6z217h5jZe4hyq66EYwLpf6NhFH1KrhLbuHgOtXsW5A=",
-    "LeerXML.xaml": "DCDDKE1GiHNKumOQuRobUFTIs9KkeLWRXgjLArVf0kA=",
-    ".scripts/Infonavit.vbs": "Z5kG9zb9WNPW+a1zsctRaIoJyZg+PVqU3ISsZl2UFcI=",
-    ".scripts/Refacturacion.vbs": "KQ0pfXBDd0fRE5a7T4OgQctM8c+ZCgsDWThOSSsUpiM=",
     ".scripts/IMSS.vbs": "8iBGlx8w5fvZfh+AjYINBqFY7qtxwF7clNYtNdDWlMs=",
+    ".scripts/Refacturacion.vbs": "EK8EGjbfXcDbJ5yEjn9kjGYdfB7QfVVB7BsNX/aTdNQ=",
+    ".scripts/ISN.vbs": "9ZImBPrtzFOSLKmedsTRZ5OXGdxYz6mEifOVuPe8JXQ=",
+    ".temp/new 2.txt": "nSH3uRUNqhJaxhMNSK0meOiFSM4eYI2q5J+Yxh2ymS4=",
+    ".project/globalVariables.json": "T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU=",
+    ".tmh/config.json": "Tk6QDUUsqtifkyIEMEjvqL300ZUpxaIp15qlWlZ+18w=",
+    ".templates/Catalogo Bloques.xlsx": "tsUHvpaaEhykSAsa86BQTlgR5gVlZ038odVjWS7pePY=",
+    ".scripts/Cuenta Operativa/CuentaOperativaIMSS.vbs": "WW9UMCr2Ha9Z0smYJAEnd+u/rcD2SrU7NHLFWc5O6cI=",
+    ".scripts/Infonavit.vbs": "8GQBgKpvM+BJkRF+LC3sYE5a9ch7eBSv4iNdhRi7+7M=",
+    ".scripts/Refacturacion/Refacturacion_Main.vbs": "FutW2YRQT1C9/IYuXa7qBDtKqDuUC+R5k/BWNul1wWU=",
+    ".scripts/Cuenta Operativa/CuentaOperativaISN.vbs": "izi7EmApgOzGBtCZCK6LZwbgJv9FhjWECMzuIST1hBU=",
+    ".scripts/PersonaFisica.vbs": "m+efz9tqN+8XLU/tQsZ/lsVTlwoMfoO6j7nb4c6ikLo=",
+    ".scripts/ImportTxT.vbs": "6z217h5jZe4hyq66EYwLpf6NhFH1KrhLbuHgOtXsW5A=",
+    ".scripts/Refacturacion/Refacturacion_PEP.vbs": "MXjxwbrwMJTQJ90sTwr+Ck3gyAEOHeUWJx6uTMSF+/8=",
+    ".scripts/Cuenta Operativa/CuentaOperativaPEP.vbs": "RBrWe7KIIpT0/EQiu1/LA99IkguZSLJL/QsweLPd0H4=",
+    ".temp/new 1.txt": "rh89GhmDTKlxolH0z3iahS19HtxF+gSU4X6qaui9fnc=",
+    "LeerXML.xaml": "DCDDKE1GiHNKumOQuRobUFTIs9KkeLWRXgjLArVf0kA=",
     ".project/design.json": "OSn5OGDSTqb7VoeZ2kDfitAA5XA8pC3nXBRuqXzFw0Y=",
-    ".scripts/CuentaOperativaPEP.vbs": "RBrWe7KIIpT0/EQiu1/LA99IkguZSLJL/QsweLPd0H4="
+    "Bloque29.xaml": "URJanvycopGoMEfuprXzUXQ8hRvhjGIeNwgcW1ID8yc=",
+    "LeerFacturaNomina.xaml": "noRW3GJTTJJqoHT44nm13MHd/v7xbyCCsd12W89At2w=",
+    ".scripts/Refacturacion/Refacturacion_CopyColumns.vbs": "a+cmO14KndfhDmIUzOOpboMdgceopNN4A3TIHzZjMyg=",
+    ".vscode/settings.json": "T2HliijOUV6WQdoZ7xkAJTnNykwL54DJjHRXHmAYSrI=",
+    "EscribirNomina.xaml": "YjLteWaQ5DdBuEbV7JYXxdNQhycTuKN4DYL88Gzq+gQ=",
+    ".scripts/FiltrarCuentaOperativa.vbs": "6+ajovE18NUabW89/NCZxQa/FMiz6nr9DYE2RF883VU="
   },
   "StudioWebFiles": [
     "Bloque29.xaml",
@@ -244,9 +309,6 @@
     ".project/globalVariables.json",
     ".project/PackageBindingsMetadata.json",
     ".scripts/BloquePorcentual.vbs",
-    ".scripts/CuentaOperativaIMSS.vbs",
-    ".scripts/CuentaOperativaISN.vbs",
-    ".scripts/CuentaOperativaPEP.vbs",
     ".scripts/FiltrarCuentaOperativa.vbs",
     ".scripts/ImportTxT.vbs",
     ".scripts/IMSS.vbs",
@@ -254,13 +316,22 @@
     ".scripts/ISN.vbs",
     ".scripts/PersonaFisica.vbs",
     ".scripts/Refacturacion.vbs",
+    ".scripts/Cuenta Operativa/CuentaOperativaIMSS.vbs",
+    ".scripts/Cuenta Operativa/CuentaOperativaISN.vbs",
+    ".scripts/Cuenta Operativa/CuentaOperativaPEP.vbs",
+    ".scripts/Refacturacion/Refacturacion_CopyColumns.vbs",
+    ".scripts/Refacturacion/Refacturacion_Format.vbs",
+    ".scripts/Refacturacion/Refacturacion_Main.vbs",
+    ".scripts/Refacturacion/Refacturacion_PEP.vbs",
     ".settings/Debug/settings-9e9290da.json",
     ".settings/Release/settings-9e9290da.json",
     ".temp/new 1.txt",
     ".temp/new 2.txt",
-    ".templates/Catalogo Bloques.xlsx"
+    ".templates/Catalogo Bloques.xlsx",
+    ".tmh/config.json",
+    ".vscode/settings.json"
   ],
-  "LockKey": "3cabdebb-98b2-4a95-98fc-8820a528c0bc",
+  "LockKey": "d78403db-a05a-4b4e-b600-3e364c88593e",
   "LocalProjectPath": "C:\\Users\\HE678HU\\OneDrive - EY\\Documents\\UiPath\\Leer_Facturas_Nomina",
   "ProjectId": "48074917-31c2-427d-ad94-3fa5449eb9f6",
   "ProjectName": "Leer_Facturas_Nomina",

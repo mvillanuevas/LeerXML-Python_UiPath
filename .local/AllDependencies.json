@@ -2703,7 +2703,7 @@
           }
         }
       },
-      "UiPath.System.Activities/25.4.3": {
+      "UiPath.System.Activities/25.4.4": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -2721,7 +2721,7 @@
           "System.Management.Automation": "7.2.24",
           "UiPath.CodedWorkflows": "24.10.1",
           "UiPath.Platform": "25.4.0",
-          "UiPath.System.Activities.Runtime": "25.4.3",
+          "UiPath.System.Activities.Runtime": "25.4.4",
           "UiPath.Telemetry.Client": "2.3.3",
           "net.adamec.lib.common.dmn.engine": "1.1.1"
         },
@@ -2774,10 +2774,10 @@
           }
         }
       },
-      "UiPath.System.Activities.Runtime/25.4.3": {
+      "UiPath.System.Activities.Runtime/25.4.4": {
         "type": "package",
         "dependencies": {
-          "UiPath.System.Activities.Runtime.Windows": "25.4.3"
+          "UiPath.System.Activities.Runtime.Windows": "25.4.4"
         },
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -2786,7 +2786,7 @@
           "lib/net6.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll": {}
         }
       },
-      "UiPath.System.Activities.Runtime.Windows/25.4.3": {
+      "UiPath.System.Activities.Runtime.Windows/25.4.4": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -5337,7 +5337,7 @@
           }
         }
       },
-      "UiPath.System.Activities/25.4.3": {
+      "UiPath.System.Activities/25.4.4": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -5355,7 +5355,7 @@
           "System.Management.Automation": "7.2.24",
           "UiPath.CodedWorkflows": "24.10.1",
           "UiPath.Platform": "25.4.0",
-          "UiPath.System.Activities.Runtime": "25.4.3",
+          "UiPath.System.Activities.Runtime": "25.4.4",
           "UiPath.Telemetry.Client": "2.3.3",
           "net.adamec.lib.common.dmn.engine": "1.1.1"
         },
@@ -5408,10 +5408,10 @@
           }
         }
       },
-      "UiPath.System.Activities.Runtime/25.4.3": {
+      "UiPath.System.Activities.Runtime/25.4.4": {
         "type": "package",
         "dependencies": {
-          "UiPath.System.Activities.Runtime.Windows": "25.4.3"
+          "UiPath.System.Activities.Runtime.Windows": "25.4.4"
         },
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -5420,7 +5420,7 @@
           "lib/net6.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll": {}
         }
       },
-      "UiPath.System.Activities.Runtime.Windows/25.4.3": {
+      "UiPath.System.Activities.Runtime.Windows/25.4.4": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -9772,10 +9772,10 @@
         "uipath.python.activities.nuspec"
       ]
     },
-    "UiPath.System.Activities/25.4.3": {
-      "sha512": "e7Le0+wykBgy9s1ei5UQqa87hwJLlF7C4FJ+3i928UB6y+bkg4tHj5OkvEUrKjOyeiO+Cxt2T/YqQmOLpTFqJA==",
+    "UiPath.System.Activities/25.4.4": {
+      "sha512": "qJCODG7PYjgR78u2FbVO95phleAYC8hb8cIy0ALYhwuhVkFoQg2FLy12WCUXFvQ7I+Fm9NxmakEBjy7z5NQTnA==",
       "type": "package",
-      "path": "uipath.system.activities/25.4.3",
+      "path": "uipath.system.activities/25.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9796,27 +9796,27 @@
         "lib/net6.0-windows7.0/zh-TW/UiPath.System.Activities.Design.resources.dll",
         "lib/net6.0-windows7.0/zu/UiPath.System.Activities.Design.resources.dll",
         "lib/net6.0/UiPath.System.Activities.ViewModels.dll",
-        "uipath.system.activities.25.4.3.nupkg.sha512",
+        "uipath.system.activities.25.4.4.nupkg.sha512",
         "uipath.system.activities.nuspec"
       ]
     },
-    "UiPath.System.Activities.Runtime/25.4.3": {
-      "sha512": "C9bc/h/KHsPHalarAckQ0UOK5UUcuT/dIHetfzyEIlPmgKNRuC2/eFqN5IBAW7A9hDXOKRacuetyrfCaZORbWQ==",
+    "UiPath.System.Activities.Runtime/25.4.4": {
+      "sha512": "1Lp8uTOdWmn5CgCVKXM/7KtGUIJ60bVRHV9xJ5s5MkIpK63+2jbndYtH+SEyqMNXVAa+dFGvINrfR/KNXU8ntg==",
       "type": "package",
-      "path": "uipath.system.activities.runtime/25.4.3",
+      "path": "uipath.system.activities.runtime/25.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net6.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
         "lib/net6.0/UiPath.System.Activities.Package.Runtime.dll",
-        "uipath.system.activities.runtime.25.4.3.nupkg.sha512",
+        "uipath.system.activities.runtime.25.4.4.nupkg.sha512",
         "uipath.system.activities.runtime.nuspec"
       ]
     },
-    "UiPath.System.Activities.Runtime.Windows/25.4.3": {
-      "sha512": "aisRaNb+nZ2Shvzqk3U+goeRyjJdDBynA/PimEPjdoxoFLe4yAmCCQaJOJa8xxYN57eV/9xS17vKaB9Vdui9hA==",
+    "UiPath.System.Activities.Runtime.Windows/25.4.4": {
+      "sha512": "0N2fDWYP11YZ6UOAp8ItwdjybBfMwT9AV5UwbzLnDunmGoKbevvlm5mac81mzBt9v7C5WX4RPnZ6cEdQlBlUyA==",
       "type": "package",
-      "path": "uipath.system.activities.runtime.windows/25.4.3",
+      "path": "uipath.system.activities.runtime.windows/25.4.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9854,7 +9854,7 @@
         "lib/net6.0-windows7.0/zh-CN/UiPath.System.Activities.resources.dll",
         "lib/net6.0-windows7.0/zh-TW/UiPath.System.Activities.resources.dll",
         "lib/net6.0-windows7.0/zu/UiPath.System.Activities.resources.dll",
-        "uipath.system.activities.runtime.windows.25.4.3.nupkg.sha512",
+        "uipath.system.activities.runtime.windows.25.4.4.nupkg.sha512",
         "uipath.system.activities.runtime.windows.nuspec"
       ]
     },
@@ -9973,20 +9973,20 @@
     "": [],
     "net8.0-windows7.0": [
       "UiPath.Python.Activities >= 1.10.0 <= 1.10.0",
-      "UiPath.System.Activities >= 25.4.3 <= 25.4.3",
+      "UiPath.System.Activities >= 25.4.4 <= 25.4.4",
       "UiPath.WebAPI.Activities >= 1.21.1 <= 1.21.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\se109874\\.nuget\\packages\\": {}
+    "C:\\Users\\HE678HU\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Leer_Facturas_Nomina",
       "projectName": "Leer_Facturas_Nomina",
-      "projectPath": "C:\\Users\\se109874\\OneDrive - Repsol\\Documentos\\UiPath\\LeerXML-Python_UiPath\\.local",
-      "packagesPath": "C:\\Users\\se109874\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\se109874\\OneDrive - Repsol\\Documentos\\UiPath\\LeerXML-Python_UiPath\\.local",
+      "projectPath": "C:\\Users\\HE678HU\\OneDrive - EY\\Documents\\UiPath\\Leer_Facturas_Nomina\\.local",
+      "packagesPath": "C:\\Users\\HE678HU\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HE678HU\\OneDrive - EY\\Documents\\UiPath\\Leer_Facturas_Nomina\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"
@@ -10003,7 +10003,7 @@
           "UiPath.System.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[25.4.3, 25.4.3]"
+            "version": "[25.4.4, 25.4.4]"
           },
           "UiPath.WebAPI.Activities": {
             "include": "Runtime",
@@ -10011,7 +10011,7 @@
             "version": "[1.21.1, 1.21.1]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\se109874\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\HE678HU\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
