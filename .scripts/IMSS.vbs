@@ -85,7 +85,7 @@ lastAK3 = objWorksheetIMSS.Cells(objWorksheetIMSS.Rows.Count, 37).End(-4162).Row
 ' Pegar los valores únicos en otra columna
 For Each key In uniqueDict.Keys
     objWorksheetIMSS.Cells(lastAK2, 37).Value = key ' 37 = columna AK
-    objWorksheetIMSS.Cells(lastAK2, 38).Formula = "=SUMIF($AK$2:$AK$" & lastAK3 & ",AK" & lastAK2 & ",$AN$2:$AN$" & lastAK3 & ")"
+    objWorksheetIMSS.Cells(lastAK2, 38).Formula = "=-SUMIF($AK$2:$AK$" & lastAK3 & ",AK" & lastAK2 & ",$AN$2:$AN$" & lastAK3 & ")"
     lastAK2 = lastAK2 + 1
 Next
 
